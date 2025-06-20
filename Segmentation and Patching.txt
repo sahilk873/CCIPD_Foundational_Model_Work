@@ -1,0 +1,22 @@
+Segmentation and Patching: 
+
+python run_batch_of_slides.py --task all --wsi_dir /scratch/users/sxk2517/kich/TCGA-KICH-Pathology --job_dir /scratch/users/sxk2517/trident_processed --segmenter hest --mag 20 --patch_size 512 --gpu 0 --max_workers 12
+
+
+Feature Extraction: 
+
+python run_batch_of_slides.py --task feat --wsi_dir /scratch/users/sxk2517/kich/TCGA-KICH-Pathology --job_dir /scratch/users/sxk2517/trident_processed --patch_encoder conch_v15 --mag 20 --patch_size 512 --gpu 0 --max_workers 12 --feat_batch_size 64
+
+Run Classifier: 
+
+python mlp_classifier_from_h5.py --h5 /scratch/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5 --epochs 20 --batch_size 256 --lr 0.001
+
+
+Run h5 classification: 
+
+python append_labels_to_h5_batch.py --h5_dir /scratch/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 --xml_dir /scratch/users/sxk2517/TCGA-KICH-Pathology-Segmentations --patch_size 512
+
+Environment Build:
+
+module load Python/3.11.5-GCCcore-13.2.0
+source /scratch/users/sxk2517/trident_env/bin/activate
