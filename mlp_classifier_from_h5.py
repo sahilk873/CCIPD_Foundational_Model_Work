@@ -214,7 +214,6 @@ if __name__ == "__main__":
 
     main(args.h5, epochs=args.epochs, batch_size=args.batch_size, lr=args.lr)
 '''
-
 import os
 import h5py
 import numpy as np
@@ -232,18 +231,43 @@ from sklearn.metrics import (
 
 
 class PatchFeatureDataset(Dataset):
-    def __init__(self, h5_path):
-        with h5py.File(h5_path, "r") as f:
-            self.features = f["features"][:]
-            self.labels = f["labels"][:]
-        self.features = torch.tensor(self.features, dtype=torch.float32)
-        self.labels = torch.tensor(self.labels, dtype=torch.long)
+    def __init__(self, h5_dir):
+        features_list, labels_list = [], []
+
+        for fname in os.listdir(h5_dir):
+            if not fname.endswith(".h5"):
+                continue
+            full_path = os.path.join(h5_dir, fname)
+            try:
+                with h5py.File(full_path, "r") as f:
+                    if "features" in f and "labels" in f:
+                        features = f["features"][:]
+                        labels = f["labels"][:]
+                        if len(features) == len(labels):  # sanity check
+                            features_list.append(features)
+                            labels_list.append(labels)
+                        else:
+                            print(f"⚠️ Skipping {fname}: mismatched features/labels shape")
+                    else:
+                        print(f"⚠️ Skipping {fname}: missing 'features' or 'labels'")
+            except Exception as e:
+                print(f"❌ Error reading {fname}: {e}")
+
+        if not features_list:
+            raise ValueError("No valid .h5 files found in the directory.")
+
+        all_features = np.concatenate(features_list, axis=0)
+        all_labels = np.concatenate(labels_list, axis=0)
+
+        self.features = torch.tensor(all_features, dtype=torch.float32)
+        self.labels = torch.tensor(all_labels, dtype=torch.long)
 
     def __len__(self):
         return len(self.labels)
 
     def __getitem__(self, idx):
         return self.features[idx], self.labels[idx]
+
 
 
 class DeepMLP(nn.Module):
@@ -254,17 +278,14 @@ class DeepMLP(nn.Module):
             nn.BatchNorm1d(hidden_dim),
             nn.ReLU(),
             nn.Dropout(0.3),
-
             nn.Linear(hidden_dim, hidden_dim),
             nn.BatchNorm1d(hidden_dim),
             nn.ReLU(),
             nn.Dropout(0.3),
-
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.BatchNorm1d(hidden_dim // 2),
             nn.ReLU(),
             nn.Dropout(0.2),
-
             nn.Linear(hidden_dim // 2, 2)
         )
 
@@ -320,11 +341,11 @@ def compute_metrics(y_true, y_pred, y_probs):
     print(classification_report(y_true, y_pred))
 
 
-def main(h5_path, epochs=20, batch_size=128, lr=1e-3):
+def main(h5_dir, epochs=20, batch_size=128, lr=1e-3):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[INFO] Using device: {device}")
 
-    dataset = PatchFeatureDataset(h5_path)
+    dataset = PatchFeatureDataset(h5_dir)
     input_dim = dataset.features.shape[1]
 
     val_size = int(0.2 * len(dataset))
@@ -356,10 +377,10 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--h5", required=True, help="Path to h5 file with 'features' and 'labels'")
+    parser.add_argument("--h5_dir", required=True, help="Directory of H5 files with 'features' and 'labels'")
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--lr", type=float, default=1e-3)
     args = parser.parse_args()
 
-    main(args.h5, epochs=args.epochs, batch_size=args.batch_size, lr=args.lr)
+    main(args.h5_dir, epochs=args.epochs, batch_size=args.batch_size, lr=args.lr)

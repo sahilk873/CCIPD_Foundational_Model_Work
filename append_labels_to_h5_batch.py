@@ -63,6 +63,7 @@ def main(h5_dir, xml_dir, patch_size):
         try:
             polygons = extract_tumor_polygons(xml_path)
             append_labels(h5_path, polygons, patch_size=patch_size)
+            print(xml_path)
         except Exception as e:
             print(f"[ERROR] Failed for {h5_path}: {e}")
 
