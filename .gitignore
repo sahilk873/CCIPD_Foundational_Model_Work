@@ -1,0 +1,31 @@
+# environments
+trident_env/
+.env
+*.conda
+*.venv
+
+# data / images / WSIs
+TCGA-*/
+images/
+trident_processed/
+store/
+
+# model weights
+model_weights/
+
+# outputs / maps / overlays
+*_attn_maps/
+overlays_*/
+z_ablation/
+
+# logs
+*.out
+*.err
+slurm-*.out
+slurm-*.err
+
+# misc
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
