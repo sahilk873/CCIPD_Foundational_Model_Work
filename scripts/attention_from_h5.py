@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
-# attention_from_h5.py
+# attention_from_h5_folder.py
+#
+# What this script does
+# 1) Accepts either a single H5 file OR a folder (or glob) of H5/HDF5 files
+# 2) For each H5, loads tiles from dataset key "images" or "imgs"
+# 3) Runs a chosen foundation model (conch, hoptimus, musk)
+# 4) Hooks a chosen attention layer and captures attention weights
+# 5) Produces attention overlay PNGs for up to --max-tiles tiles per H5
+#
+# Key fixes included
+# - Works on folders (not just one H5)
+# - timm attention hook now accepts attn_mask and other kwargs
+# - More defensive attention module discovery across timm and TorchScale-style MHA
+# - Robust patch-grid inference even with register/distill tokens
 
 import argparse
 import os
-import re
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -15,9 +27,8 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
 
-
 # -----------------------------
-# Loaders
+# Loaders (your local loaders)
 # -----------------------------
 from lora_conch_loader import load_conch_v15
 from lora_hoptimus1_loader import load_hoptimus1
@@ -25,23 +36,32 @@ from lora_musk_loader import load_musk
 
 
 # -----------------------------
-# Utilities
+# H5 -> tiles
 # -----------------------------
 def load_tiles_from_h5(h5_path: Path) -> np.ndarray:
     with h5py.File(h5_path, "r") as f:
         for key in ("images", "imgs"):
             if key in f:
                 return f[key][:]
-    raise KeyError("H5 must contain dataset key 'images' or 'imgs'.")
+    raise KeyError(f"{h5_path.name}: H5 must contain dataset key 'images' or 'imgs'.")
 
 
+# -----------------------------
+# Image helpers
+# -----------------------------
 def tile_to_pil(tile: np.ndarray) -> Image.Image:
+    """
+    Supports tiles stored as:
+      - (H, W, C) with C in {1,3,4}
+      - (C, H, W) with C in {1,3,4}
+      - (H, W) grayscale
+    """
     if tile.ndim == 3 and tile.shape[-1] in (1, 3, 4):  # (H,W,C)
         arr = tile[..., :3]
         if arr.shape[-1] == 1:
             arr = np.repeat(arr, 3, axis=-1)
         return Image.fromarray(arr.astype(np.uint8))
-    if tile.ndim == 3 and tile.shape[0] in (1, 3, 4):   # (C,H,W)
+    if tile.ndim == 3 and tile.shape[0] in (1, 3, 4):  # (C,H,W)
         arr = tile[:3]
         if arr.shape[0] == 1:
             arr = np.repeat(arr, 3, axis=0)
@@ -60,12 +80,19 @@ def resize_pil_if_needed(img: Image.Image, img_size: Optional[int]) -> Image.Ima
     return img.resize((img_size, img_size), resample=Image.BILINEAR)
 
 
+# -----------------------------
+# Attention module discovery
+# -----------------------------
 def _collect_attn_modules(model: torch.nn.Module) -> List[torch.nn.Module]:
     """
-    timm ViT attention: has qkv/num_heads/proj
-    TorchScale-style attention: has q_proj/k_proj/v_proj
+    Collect possible attention modules across common implementations.
+
+    timm ViT Attention modules usually have:
+      - qkv, num_heads, proj
+    TorchScale / fairseq-style MHA often have:
+      - q_proj, k_proj, v_proj
     """
-    attn_mods = []
+    attn_mods: List[torch.nn.Module] = []
     for m in model.modules():
         if all(hasattr(m, a) for a in ("qkv", "num_heads", "proj")):
             attn_mods.append(m)
@@ -79,24 +106,21 @@ def _infer_patch_layout_from_tokens(N: int) -> Tuple[int, int]:
     """
     Robust token layout inference.
 
-    Many models have:
-      N = 1 + R + P, where P = s*s patches, R = register/distill tokens (often 4)
-    We find largest square P <= (N-1) and set special = N - P.
+    Many ViTs:
+      N = special + P, where P = s*s patches, special includes CLS and possible register/distill tokens.
 
-    If N itself is a square, we allow no-CLS case: special=0, P=N.
-
-    Returns: (grid_side s, special_tokens_count)
+    Strategy:
+      - If N is a perfect square, allow special=0, P=N.
+      - Else assume at least CLS, search for largest square P <= (N-1), then special = N - P.
     """
-    # no CLS case
     s0 = int(np.floor(np.sqrt(N)))
     if s0 * s0 == N:
         return s0, 0
 
-    # CLS plus possibly extra tokens
     maxP = N - 1
     s = int(np.floor(np.sqrt(maxP)))
     P = s * s
-    special = N - P  # includes CLS + any registers
+    special = N - P
     if P <= 0:
         raise ValueError(f"Cannot infer patch grid from token count N={N}")
     return s, special
@@ -104,7 +128,7 @@ def _infer_patch_layout_from_tokens(N: int) -> Tuple[int, int]:
 
 def _normalize_attn_to_BHNN(attn: torch.Tensor) -> torch.Tensor:
     """
-    Normalize common attention formats to (B, H, N, N).
+    Normalize attention tensors to shape (B, H, N, N)
     """
     if attn.ndim == 4:
         return attn
@@ -115,6 +139,9 @@ def _normalize_attn_to_BHNN(attn: torch.Tensor) -> torch.Tensor:
     raise RuntimeError(f"Unexpected attention shape: {tuple(attn.shape)}")
 
 
+# -----------------------------
+# Attention capture
+# -----------------------------
 def get_attention_map(
     model: torch.nn.Module,
     x: torch.Tensor,
@@ -124,10 +151,14 @@ def get_attention_map(
     musk_forward: bool = False,
 ) -> np.ndarray:
     """
-    Monkey-patch one attention module and capture its softmax weights.
-    Works for:
-      - timm ViT Attention (qkv)
-      - TorchScale-style MHA (q_proj/k_proj/v_proj)
+    Hook one attention module and capture softmax attention weights.
+
+    Supports:
+      - timm ViT Attention (qkv/num_heads/proj)
+      - TorchScale-style MHA (q_proj/k_proj/v_proj) when it can return weights
+
+    Returns:
+      attn_map as numpy array sized (H, W) matching x spatial size
     """
 
     search_root = model.core if hasattr(model, "core") else model
@@ -135,13 +166,20 @@ def get_attention_map(
     if not attn_modules:
         raise RuntimeError("No attention modules found to hook (timm or TorchScale-style).")
 
+    # normalize negative indices
+    if layer_idx < 0:
+        layer_idx = len(attn_modules) + layer_idx
+    if layer_idx < 0 or layer_idx >= len(attn_modules):
+        raise IndexError(f"layer_idx out of range. Got {layer_idx}, num_layers={len(attn_modules)}")
+
     target = attn_modules[layer_idx]
     attn_store = {}
 
     is_timm_attn = all(hasattr(target, a) for a in ("qkv", "num_heads", "proj"))
 
     if is_timm_attn:
-        def patched_forward_timm(self, x_in):
+        # timm newer versions can pass attn_mask=... into attention forward
+        def patched_forward_timm(self, x_in, **kwargs):
             B, N, C = x_in.shape
             qkv = (
                 self.qkv(x_in)
@@ -149,9 +187,23 @@ def get_attention_map(
                 .permute(2, 0, 3, 1, 4)
             )
             q, k, v = qkv.unbind(0)
+
             attn = (q @ k.transpose(-2, -1)) * getattr(self, "scale", 1.0)
+
+            # Optional support for masks (best-effort)
+            attn_mask = kwargs.get("attn_mask", None)
+            if attn_mask is not None and torch.is_tensor(attn_mask):
+                # Common shapes: (N,N), (B,N,N), (B,1,N,N)
+                if attn_mask.ndim == 2:
+                    attn = attn + attn_mask.unsqueeze(0).unsqueeze(0)
+                elif attn_mask.ndim == 3:
+                    attn = attn + attn_mask.unsqueeze(1)
+                elif attn_mask.ndim == 4:
+                    attn = attn + attn_mask
+
             attn = attn.softmax(dim=-1)
             attn_store["attn"] = attn.detach().cpu()
+
             out = (attn @ v).transpose(1, 2).reshape(B, N, C)
             out = self.proj(out)
             if hasattr(self, "proj_drop"):
@@ -176,8 +228,9 @@ def get_attention_map(
         target.forward = orig_forward
 
     else:
-        # TorchScale / fairseq-style: force returning weights if supported
+        # TorchScale / fairseq-style MHA: attempt to force returning weights if signature supports it
         import inspect
+
         sig = inspect.signature(target.forward)
         orig_forward = target.forward
 
@@ -224,21 +277,21 @@ def get_attention_map(
     attn = attn[0]  # (H,N,N)
 
     if head_idx is not None:
-        attn_2d = attn[head_idx]         # (N,N)
+        attn_2d = attn[head_idx]  # (N,N)
     else:
-        attn_2d = attn.mean(0)           # (N,N)
+        attn_2d = attn.mean(0)  # (N,N)
 
-    N = attn_2d.shape[-1]
-    grid_side, special = _infer_patch_layout_from_tokens(N)
+    Ntok = attn_2d.shape[-1]
+    grid_side, special = _infer_patch_layout_from_tokens(Ntok)
     P = grid_side * grid_side
 
     if special == 0:
-        # No CLS token: use mean attention each token gives to others, then reshape
+        # No CLS token case
         patch_vec = attn_2d.mean(0)[:P]
     else:
-        # CLS is assumed at index 0; patch tokens assumed at the end
+        # CLS assumed at index 0, patch tokens assumed after special tokens
         patch_start = special
-        patch_vec = attn_2d[0, patch_start:patch_start + P]
+        patch_vec = attn_2d[0, patch_start : patch_start + P]
 
     grid = patch_vec.reshape(grid_side, grid_side)
 
@@ -247,7 +300,7 @@ def get_attention_map(
         size=(x.shape[2], x.shape[3]),
         mode="bilinear",
         align_corners=False,
-    )[0, 0].numpy()
+    )[0, 0].detach().cpu().numpy()
 
     return attn_map
 
@@ -271,34 +324,79 @@ def plot_attention_overlay(tile_tensor: torch.Tensor, attn_map: np.ndarray, save
 
 
 # -----------------------------
-# Main
+# Input listing (single, folder, glob)
+# -----------------------------
+def list_h5_files(h5: Optional[str], h5_dir: Optional[str], glob_pat: Optional[str]) -> List[Path]:
+    items: List[Path] = []
+
+    if h5 is not None:
+        items.append(Path(h5))
+
+    if h5_dir is not None:
+        d = Path(h5_dir)
+        items.extend(sorted(d.glob("*.h5")))
+        items.extend(sorted(d.glob("*.hdf5")))
+
+    if glob_pat is not None:
+        p = Path(glob_pat)
+        if any(ch in glob_pat for ch in ["*", "?", "["]):
+            parent = p.parent if str(p.parent) != "" else Path(".")
+            items.extend(sorted(parent.glob(p.name)))
+        else:
+            if p.is_dir():
+                items.extend(sorted(p.glob("*.h5")))
+                items.extend(sorted(p.glob("*.hdf5")))
+            else:
+                items.append(p)
+
+    uniq: List[Path] = []
+    seen = set()
+    for x in items:
+        x = x.resolve()
+        if x in seen:
+            continue
+        seen.add(x)
+        if x.is_file():
+            uniq.append(x)
+    return uniq
+
+
+# -----------------------------
+# CLI
 # -----------------------------
 def parse_args():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--h5", type=str, required=True)
+    g = ap.add_mutually_exclusive_group(required=True)
+    g.add_argument("--h5", type=str, help="Single H5 file (backward compatible).")
+    g.add_argument("--h5-dir", type=str, help="Directory containing H5/HDF5 files.")
+    g.add_argument("--glob", type=str, help="Glob pattern like '/path/*.h5' or a directory path.")
+
     ap.add_argument("--out-dir", type=str, required=True)
     ap.add_argument("--model", type=str, required=True, choices=["conch", "hoptimus", "musk"])
     ap.add_argument("--device", type=str, default="cuda")
     ap.add_argument("--max-tiles", type=int, default=100)
     ap.add_argument("--layer-idx", type=int, default=-1)
     ap.add_argument("--head-idx", type=int, default=None)
-    ap.add_argument("--img-size", type=int, default=None, help="Force a square resize before tfm (e.g., 224).")
-    ap.add_argument("--hf-token-env", type=str, default="HF_TOKEN", help="Env var name for HF token.")
+    ap.add_argument("--img-size", type=int, default=None, help="Force square resize before tfm (e.g., 224).")
+    ap.add_argument("--hf-token-env", type=str, default="HF_TOKEN", help="Env var name containing HF token.")
+    ap.add_argument("--flat-out", action="store_true", help="Dump PNGs directly into out-dir (no per-H5 subfolders).")
     return ap.parse_args()
 
 
+# -----------------------------
+# Main
+# -----------------------------
 def main():
     args = parse_args()
-    h5_path = Path(args.h5)
+
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     device = args.device
     hf_token = os.environ.get(args.hf_token_env, None)
 
-    # Load model + tfm
+    # Load model and transform once
     musk_forward = False
-
     if args.model == "conch":
         model, tfm, _ = load_conch_v15(device=device, prefer_hf=True, hf_token=hf_token)
         expected = getattr(model, "expected_img_size", None)
@@ -308,40 +406,64 @@ def main():
     else:
         model, tfm, _ = load_musk(device=device, hf_token=hf_token)
         expected = getattr(model, "expected_img_size", None)
-        musk_forward = True  # safe default for MUSK wrappers
+        musk_forward = True
 
     model.eval()
     param_dtype = next(model.parameters()).dtype
 
-    # Choose resize size: CLI overrides loader
     resize_size = args.img_size if args.img_size is not None else expected
 
-    tiles = load_tiles_from_h5(h5_path)
-    N = min(args.max_tiles, len(tiles))
+    h5_files = list_h5_files(args.h5, args.h5_dir, args.glob)
+    if not h5_files:
+        raise FileNotFoundError("No H5/HDF5 files found for the given input.")
 
-    for idx in range(N):
-        img = tile_to_pil(tiles[idx])
-        img = resize_pil_if_needed(img, resize_size)
+    head_tag = f"H{args.head_idx}" if args.head_idx is not None else "Havg"
 
-        x = tfm(img).unsqueeze(0).to(device=device, dtype=param_dtype)
+    total_tiles = 0
+    for fi, h5_path in enumerate(h5_files, start=1):
+        print(f"\n[{fi}/{len(h5_files)}] Processing: {h5_path}")
 
-        attn_map = get_attention_map(
-            model=model,
-            x=x,
-            device=device,
-            layer_idx=args.layer_idx,
-            head_idx=args.head_idx,
-            musk_forward=musk_forward,
-        )
+        try:
+            tiles = load_tiles_from_h5(h5_path)
+        except Exception as e:
+            print(f"  [WARN] Skipping {h5_path.name}: {e}")
+            continue
 
-        head_tag = f"H{args.head_idx}" if args.head_idx is not None else "Havg"
-        save_path = out_dir / f"tile{idx}_L{args.layer_idx}_{head_tag}.png"
-        plot_attention_overlay(x, attn_map, save_path)
+        n_tiles = min(args.max_tiles, len(tiles))
 
-        if (idx + 1) % 10 == 0:
-            print(f"Processed {idx+1}/{N}")
+        # output folder per file
+        if args.flat_out:
+            cur_out = out_dir
+        else:
+            cur_out = out_dir / h5_path.stem
+            cur_out.mkdir(parents=True, exist_ok=True)
 
-    print(f"✅ Done. Saved {N} attention overlays to: {out_dir}")
+        for idx in range(n_tiles):
+            img = tile_to_pil(tiles[idx])
+            img = resize_pil_if_needed(img, resize_size)
+
+            x = tfm(img).unsqueeze(0).to(device=device, dtype=param_dtype)
+
+            attn_map = get_attention_map(
+                model=model,
+                x=x,
+                device=device,
+                layer_idx=args.layer_idx,
+                head_idx=args.head_idx,
+                musk_forward=musk_forward,
+            )
+
+            prefix = "" if not args.flat_out else f"{h5_path.stem}_"
+            save_path = cur_out / f"{prefix}tile{idx}_L{args.layer_idx}_{head_tag}.png"
+            plot_attention_overlay(x, attn_map, save_path)
+
+            if (idx + 1) % 10 == 0:
+                print(f"  Processed {idx+1}/{n_tiles} tiles")
+
+        total_tiles += n_tiles
+        print(f"  Saved {n_tiles} overlays -> {cur_out}")
+
+    print(f"\nDone. Processed {len(h5_files)} files, {total_tiles} total tiles. Output: {out_dir}")
 
 
 if __name__ == "__main__":
