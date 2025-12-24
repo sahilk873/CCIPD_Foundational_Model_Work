@@ -10,6 +10,8 @@ images/
 trident_processed/
 store/
 
+*.pt
+
 # model weights
 model_weights/
 

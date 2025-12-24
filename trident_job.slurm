@@ -39,7 +39,7 @@ echo "========================"
 cd /scratch/pioneer/users/sxk2517/scripts
 
 python train_consistency_all_enet_dose.py \
-    --baseline_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v155 \
+    --baseline_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 \
     --aug_root /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented \
     --split slide \
     --l1_ratio 0.6 \
