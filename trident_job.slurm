@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
-#SBATCH --time=12:00:00
+#SBATCH --time=36:00:00
 
 # If your site supports requeueing, this helps you recover from bad nodes
 #SBATCH --requeue
@@ -15,7 +15,7 @@ set -euo pipefail
 
 # ---- Environment ----
 source /scratch/pioneer/users/sxk2517/trident_env/bin/activate
-export HUGGINGFACE_TOKEN=""
+export HUGGINGFACE_TOKEN="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"
 
 # Make CUDA errors show at the correct line (helpful for diagnosing)
 export CUDA_LAUNCH_BLOCKING=1
@@ -38,16 +38,18 @@ echo "========================"
 # ---- Run ----
 cd /scratch/pioneer/users/sxk2517/scripts
 
-python attention_from_h5.py \
-  --h5 /scratch/pioneer/users/sxk2517/images/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c_patches_images.h5 \
-  --out-dir /scratch/pioneer/users/sxk2517/hoptimus_attn_maps \
-  --model hoptimus \
-  --max-tiles 100 \
-  --layer-idx -1
+python train_consistency_all_enet_dose.py \
+    --baseline_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v155 \
+    --aug_root /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented \
+    --split slide \
+    --l1_ratio 0.6 \
+    --C 0.5
 
 echo "=== NVIDIA-SMI (post) ==="
 nvidia-smi || true
 echo "========================="
+
+
 
 #python total_overlay.py --hopt_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus1 --musk_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_musk --conch_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 --slides_dir /scratch/pioneer/users/sxk2517/trident_processed/thumbnails --hopt_model /scratch/pioneer/users/sxk2517/model_weights/hoptimus_base.pth --musk_model /scratch/pioneer/users/sxk2517/model_weights/musk_base.pth --conch_model /scratch/pioneer/users/sxk2517/model_weights/conch_base.pth --ensemble_model  /scratch/pioneer/users/sxk2517/model_weights/fused_all.pth --save_dir /scratch/pioneer/users/sxk2517/overlays_total --max_overlays 150
 #python fusion_model.py --dirs /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_musk /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus1 --epochs 30 --batch_size 256 --lr 1e-4 --save_path fused_all.pth

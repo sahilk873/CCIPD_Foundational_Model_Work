@@ -1,0 +1,299 @@
+{
+  "augmentation": "he_L0",
+  "baseline_dir": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15",
+  "aug_folder": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/he_L0",
+  "matched_pairs": 93,
+  "missing_pairs": 0,
+  "failed_pairs": 0,
+  "meta_examples_first_3": [
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/he_L0/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 4624,
+      "has_labels": true
+    },
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/he_L0/TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 3637,
+      "has_labels": true
+    },
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/he_L0/TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 5200,
+      "has_labels": true
+    }
+  ],
+  "summary_rows": [
+    {
+      "group": "all",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 361644,
+      "mean": 0.952814519405365,
+      "std": 0.037957124412059784,
+      "median": 0.9630968570709229,
+      "p05": 0.8815212845802307,
+      "p25": 0.9404284954071045,
+      "p75": 0.9779509902000427,
+      "p95": 0.9883341789245605
+    },
+    {
+      "group": "all",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 361644,
+      "mean": 0.952814519405365,
+      "std": 0.03795712813735008,
+      "median": 0.9630968570709229,
+      "p05": 0.8815212845802307,
+      "p25": 0.940428614616394,
+      "p75": 0.9779510498046875,
+      "p95": 0.9883341193199158
+    },
+    {
+      "group": "all",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 361644,
+      "mean": 8.022598266601562,
+      "std": 2.9397964477539062,
+      "median": 7.5578508377075195,
+      "p05": 4.250535011291504,
+      "p25": 5.843938827514648,
+      "p75": 9.600519180297852,
+      "p95": 13.536133766174316
+    },
+    {
+      "group": "all",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 361644,
+      "mean": 177.7364959716797,
+      "std": 65.16248321533203,
+      "median": 167.43093872070312,
+      "p05": 94.18377685546875,
+      "p25": 129.46478271484375,
+      "p75": 212.64634704589844,
+      "p95": 299.93170166015625
+    },
+    {
+      "group": "tumor",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 125079,
+      "mean": 0.9693413972854614,
+      "std": 0.021170219406485558,
+      "median": 0.9750730991363525,
+      "p05": 0.9293237924575806,
+      "p25": 0.9611893892288208,
+      "p75": 0.98388671875,
+      "p95": 0.9900628924369812
+    },
+    {
+      "group": "non_tumor",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 236565,
+      "mean": 0.9440763592720032,
+      "std": 0.04177042469382286,
+      "median": 0.9547770023345947,
+      "p05": 0.8648160099983215,
+      "p25": 0.9298731088638306,
+      "p75": 0.9717547297477722,
+      "p95": 0.9856966137886047
+    },
+    {
+      "group": "tumor",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 125079,
+      "mean": 0.9693413972854614,
+      "std": 0.021170221269130707,
+      "median": 0.9750730991363525,
+      "p05": 0.9293238520622253,
+      "p25": 0.961189329624176,
+      "p75": 0.98388671875,
+      "p95": 0.9900628924369812
+    },
+    {
+      "group": "non_tumor",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 236565,
+      "mean": 0.9440763592720032,
+      "std": 0.04177042841911316,
+      "median": 0.9547771215438843,
+      "p05": 0.8648160099983215,
+      "p25": 0.9298731684684753,
+      "p75": 0.9717548489570618,
+      "p95": 0.9856966137886047
+    },
+    {
+      "group": "tumor",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 125079,
+      "mean": 6.5676984786987305,
+      "std": 2.0814836025238037,
+      "median": 6.21312952041626,
+      "p05": 3.9226298332214355,
+      "p25": 4.995730400085449,
+      "p75": 7.751553535461426,
+      "p95": 10.458171844482422
+    },
+    {
+      "group": "non_tumor",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 236565,
+      "mean": 8.79184627532959,
+      "std": 3.0348339080810547,
+      "median": 8.364075660705566,
+      "p05": 4.707201957702637,
+      "p25": 6.611752986907959,
+      "p75": 10.414654731750488,
+      "p95": 14.456506729125977
+    },
+    {
+      "group": "tumor",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 125079,
+      "mean": 145.49949645996094,
+      "std": 46.14750671386719,
+      "median": 137.6045684814453,
+      "p05": 86.90033721923828,
+      "p25": 110.66600036621094,
+      "p75": 171.74676513671875,
+      "p95": 231.73768615722656
+    },
+    {
+      "group": "non_tumor",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 236565,
+      "mean": 194.7811279296875,
+      "std": 67.26996612548828,
+      "median": 185.2479248046875,
+      "p05": 104.260009765625,
+      "p25": 146.51524353027344,
+      "p75": 230.68731689453125,
+      "p95": 320.19012451171875
+    }
+  ],
+  "auc_results": [
+    {
+      "auc": 0.732798333258804,
+      "best_threshold_original_score_space": 0.9648492336273193,
+      "best_J": 0.3437298509340702,
+      "tp": 87449,
+      "fp": 84080,
+      "tn": 152485,
+      "fn": 37630,
+      "sensitivity": 0.6991501371133444,
+      "specificity": 0.6445797138207258,
+      "accuracy": 0.6634535620665627,
+      "score_direction": "higher=more_tumor",
+      "metric": "corr",
+      "column": "corr",
+      "n": 361644,
+      "tumor_n": 125079,
+      "non_tumor_n": 236565
+    },
+    {
+      "auc": 0.7327983297271234,
+      "best_threshold_original_score_space": 0.9648491144180298,
+      "best_J": 0.3437298509340702,
+      "tp": 87449,
+      "fp": 84080,
+      "tn": 152485,
+      "fn": 37630,
+      "sensitivity": 0.6991501371133444,
+      "specificity": 0.6445797138207258,
+      "accuracy": 0.6634535620665627,
+      "score_direction": "higher=more_tumor",
+      "metric": "cosine",
+      "column": "cosine",
+      "n": 361644,
+      "tumor_n": 125079,
+      "non_tumor_n": 236565
+    },
+    {
+      "auc": 0.7327186127377706,
+      "best_threshold_original_score_space": 163.33364868164062,
+      "best_J": 0.3433836746379129,
+      "tp": 87356,
+      "fp": 83986,
+      "tn": 152579,
+      "fn": 37723,
+      "sensitivity": 0.6984066070243606,
+      "specificity": 0.6449770676135523,
+      "accuracy": 0.6634563272168209,
+      "score_direction": "lower=more_tumor",
+      "metric": "l1",
+      "column": "l1",
+      "n": 361644,
+      "tumor_n": 125079,
+      "non_tumor_n": 236565
+    },
+    {
+      "auc": 0.7326590264113775,
+      "best_threshold_original_score_space": 7.3769354820251465,
+      "best_J": 0.34339332971148184,
+      "tp": 87427,
+      "fp": 84118,
+      "tn": 152447,
+      "fn": 37652,
+      "sensitivity": 0.6989742482750901,
+      "specificity": 0.6444190814363917,
+      "accuracy": 0.6632876530510669,
+      "score_direction": "lower=more_tumor",
+      "metric": "l2",
+      "column": "l2",
+      "n": 361644,
+      "tumor_n": 125079,
+      "non_tumor_n": 236565
+    }
+  ]
+}

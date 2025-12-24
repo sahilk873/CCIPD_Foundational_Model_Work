@@ -1,0 +1,299 @@
+{
+  "augmentation": "none",
+  "baseline_dir": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15",
+  "aug_folder": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/none",
+  "matched_pairs": 27,
+  "missing_pairs": 0,
+  "failed_pairs": 0,
+  "meta_examples_first_3": [
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/none/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": ""
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 4624,
+      "has_labels": true
+    },
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/none/TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": ""
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 3637,
+      "has_labels": true
+    },
+    {
+      "baseline_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.h5",
+      "aug_h5": "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15_augmented/none/TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.h5",
+      "keys_used": {
+        "baseline": {
+          "coords": "coords",
+          "features": "features",
+          "labels": "labels"
+        },
+        "aug": {
+          "coords": "coords",
+          "features": "features",
+          "labels": ""
+        }
+      },
+      "aligned_by_coords": true,
+      "n_tiles_used": 5200,
+      "has_labels": true
+    }
+  ],
+  "summary_rows": [
+    {
+      "group": "all",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 123423,
+      "mean": 1.0,
+      "std": 6.14036892443437e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "all",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 123423,
+      "mean": 1.0,
+      "std": 6.144703945665242e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "all",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 123423,
+      "mean": 1.8954968936668593e-06,
+      "std": 0.00015268709103111178,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    },
+    {
+      "group": "all",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 123423,
+      "mean": 3.371731145307422e-05,
+      "std": 0.002825436182320118,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    },
+    {
+      "group": "tumor",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 41499,
+      "mean": 1.0,
+      "std": 6.130606067245026e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "non_tumor",
+      "metric": "cosine",
+      "direction": "higher=more_consistent",
+      "n": 81924,
+      "mean": 1.0,
+      "std": 6.145308617533374e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "tumor",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 41499,
+      "mean": 1.0,
+      "std": 6.144067299374001e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "non_tumor",
+      "metric": "corr",
+      "direction": "higher=more_consistent",
+      "n": 81924,
+      "mean": 1.0,
+      "std": 6.145026532067277e-08,
+      "median": 1.0,
+      "p05": 0.9999999403953552,
+      "p25": 1.0,
+      "p75": 1.0,
+      "p95": 1.0000001192092896
+    },
+    {
+      "group": "tumor",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 41499,
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    },
+    {
+      "group": "non_tumor",
+      "metric": "l2",
+      "direction": "lower=more_consistent",
+      "n": 81924,
+      "mean": 2.855670345525141e-06,
+      "std": 0.00018740356608759612,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    },
+    {
+      "group": "tumor",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 41499,
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    },
+    {
+      "group": "non_tumor",
+      "metric": "l1",
+      "direction": "lower=more_consistent",
+      "n": 81924,
+      "mean": 5.079697439214215e-05,
+      "std": 0.0034678662195801735,
+      "median": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0
+    }
+  ],
+  "auc_results": [
+    {
+      "auc": 0.502619354255451,
+      "best_threshold_original_score_space": 1.0,
+      "best_J": 0.006034627562786166,
+      "tp": 32829,
+      "fp": 64314,
+      "tn": 17610,
+      "fn": 8670,
+      "sensitivity": 0.7910793031157377,
+      "specificity": 0.21495532444704848,
+      "accuracy": 0.40866775236382197,
+      "score_direction": "higher=more_tumor",
+      "metric": "cosine",
+      "column": "cosine",
+      "n": 123423,
+      "tumor_n": 41499,
+      "non_tumor_n": 81924
+    },
+    {
+      "auc": 0.5009790870559219,
+      "best_threshold_original_score_space": 1.0,
+      "best_J": 0.0019226640007592444,
+      "tp": 32708,
+      "fp": 64412,
+      "tn": 17512,
+      "fn": 8791,
+      "sensitivity": 0.788163570206511,
+      "specificity": 0.21375909379424832,
+      "accuracy": 0.40689336671446974,
+      "score_direction": "higher=more_tumor",
+      "metric": "corr",
+      "column": "corr",
+      "n": 123423,
+      "tumor_n": 41499,
+      "non_tumor_n": 81924
+    },
+    {
+      "auc": 0.5001525804404081,
+      "best_threshold_original_score_space": 0.0,
+      "best_J": 0.0003051608808163353,
+      "tp": 41499,
+      "fp": 81899,
+      "tn": 25,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.00030516088081636636,
+      "accuracy": 0.3364364826653055,
+      "score_direction": "lower=more_tumor",
+      "metric": "l2",
+      "column": "l2",
+      "n": 123423,
+      "tumor_n": 41499,
+      "non_tumor_n": 81924
+    },
+    {
+      "auc": 0.5001525804404081,
+      "best_threshold_original_score_space": 0.0,
+      "best_J": 0.0003051608808163353,
+      "tp": 41499,
+      "fp": 81899,
+      "tn": 25,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.00030516088081636636,
+      "accuracy": 0.3364364826653055,
+      "score_direction": "lower=more_tumor",
+      "metric": "l1",
+      "column": "l1",
+      "n": 123423,
+      "tumor_n": 41499,
+      "non_tumor_n": 81924
+    }
+  ]
+}
