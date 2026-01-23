@@ -1,7 +1,7 @@
 # explore.py
 import h5py
 
-path = "/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5"
+path = "/scratch/pioneer/users/sxk2517/stability_embeddings_conch/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5"
 with h5py.File(path, "r") as f:
     print("Datasets:", list(f.keys()))
 

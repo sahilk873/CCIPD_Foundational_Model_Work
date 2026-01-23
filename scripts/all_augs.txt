@@ -1,0 +1,58 @@
+# Affine
+affine_L0
+affine_L1
+affine_L2
+
+# Cutout
+cutout_L0
+cutout_L1
+cutout_L2
+
+# Downsample
+downsample_L0
+downsample_L1
+downsample_L2
+
+# Elastic deformation
+elastic_L0
+elastic_L1
+elastic_L2
+
+# Gaussian noise
+gaussian_L0
+gaussian_L1
+gaussian_L2
+
+# HSV jitter
+hsv_L0
+hsv_L1
+hsv_L2
+
+# JPEG compression
+jpeg_L0
+jpeg_L1
+jpeg_L2
+
+# H&E (full)
+he_L0
+he_L1
+he_L2
+
+# H&E – eosin suppression
+he_e_suppress_L0
+he_e_suppress_L1
+he_e_suppress_L2
+
+# H&E – hematoxylin suppression
+he_h_suppress_L0
+he_h_suppress_L1
+he_h_suppress_L2
+
+# Frequency filtering
+highpass_L0
+highpass_L1
+highpass_L2
+
+lowpass_L0
+lowpass_L1
+lowpass_L2

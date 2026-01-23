@@ -305,18 +305,36 @@ def get_attention_map(
     return attn_map
 
 
-def plot_attention_overlay(tile_tensor: torch.Tensor, attn_map: np.ndarray, save_path: Path):
+def plot_attention_overlay(
+    tile_tensor: torch.Tensor,
+    attn_map: np.ndarray,
+    save_path: Path,
+    attn_thresh: float = 0.15,
+    attn_alpha: float = 0.5,
+):
     img = tile_tensor[0].permute(1, 2, 0).detach().cpu().numpy().astype(np.float32, copy=False)
     vmin, vmax = float(img.min()), float(img.max())
     img = (img - vmin) / (vmax - vmin + 1e-8)
 
     attn = np.asarray(attn_map, dtype=np.float32)
     amin, amax = float(attn.min()), float(attn.max())
-    attn = (attn - amin) / (amax - amin + 1e-8)
+    attn = (attn - amin) / (amax - amin + 1e-8)  # now in [0,1]
+
+    # Build transparency mask: below threshold -> invisible
+    attn_thresh = float(np.clip(attn_thresh, 0.0, 1.0))
+    alpha = np.zeros_like(attn, dtype=np.float32)
+    alpha[attn >= attn_thresh] = float(np.clip(attn_alpha, 0.0, 1.0))
+
+    # Optional: if you want opacity to scale with attention strength above threshold, use:
+    # alpha = np.clip((attn - attn_thresh) / (1.0 - attn_thresh + 1e-8), 0.0, 1.0) * attn_alpha
+
+    # You can also set below-threshold values to NaN to avoid any colormap bleed:
+    attn_vis = attn.copy()
+    attn_vis[attn < attn_thresh] = np.nan
 
     plt.figure(figsize=(5, 5))
     plt.imshow(img, interpolation="nearest")
-    plt.imshow(attn, cmap="jet", alpha=0.5, interpolation="nearest")
+    plt.imshow(attn_vis, cmap="jet", alpha=alpha, interpolation="nearest")
     plt.axis("off")
     plt.tight_layout(pad=0)
     plt.savefig(save_path, bbox_inches="tight", dpi=150)
@@ -380,6 +398,11 @@ def parse_args():
     ap.add_argument("--img-size", type=int, default=None, help="Force square resize before tfm (e.g., 224).")
     ap.add_argument("--hf-token-env", type=str, default="HF_TOKEN", help="Env var name containing HF token.")
     ap.add_argument("--flat-out", action="store_true", help="Dump PNGs directly into out-dir (no per-H5 subfolders).")
+    ap.add_argument("--attn-thresh", type=float, default=0.15,
+                help="Attention threshold in [0,1] after normalization. Below becomes transparent.")
+    ap.add_argument("--attn-alpha", type=float, default=0.5,
+                    help="Max overlay opacity for attention >= threshold.")
+
     return ap.parse_args()
 
 
@@ -455,7 +478,13 @@ def main():
 
             prefix = "" if not args.flat_out else f"{h5_path.stem}_"
             save_path = cur_out / f"{prefix}tile{idx}_L{args.layer_idx}_{head_tag}.png"
-            plot_attention_overlay(x, attn_map, save_path)
+            plot_attention_overlay(x,
+                                    attn_map,
+                                    save_path,
+                                    attn_thresh=args.attn_thresh,
+                                    attn_alpha=args.attn_alpha,
+                                )
+
 
             if (idx + 1) % 10 == 0:
                 print(f"  Processed {idx+1}/{n_tiles} tiles")

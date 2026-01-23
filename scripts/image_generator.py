@@ -6,17 +6,8 @@
 #   - Tumor row:   Conch, H-Optimus, MUSK (one each)
 #   - Benign row:  Conch, H-Optimus, MUSK (one each)
 #
-# Produces a 2x3 panel figure matching your prior style.
-#
-# Example:
-# python make_6panel_tumor_benign_examples.py \
-#   --tumor-conch /path/tumor_conch.png \
-#   --tumor-hoptimus /path/tumor_hopt.png \
-#   --tumor-musk /path/tumor_musk.png \
-#   --benign-conch /path/benign_conch.png \
-#   --benign-hoptimus /path/benign_hopt.png \
-#   --benign-musk /path/benign_musk.png \
-#   --out /path/out/attn_examples_tumor_vs_benign.png
+# Produces a 2x3 panel figure matching your prior style,
+# plus a blue→red attention legend bar on the right.
 
 import argparse
 from pathlib import Path
@@ -24,6 +15,7 @@ from typing import Tuple
 
 from PIL import Image
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 
 def open_rgb(path: Path) -> Image.Image:
@@ -47,6 +39,7 @@ def save_6panel_figure(
     2 rows (Tumor, Benign) × 3 columns (Conch v1.5, H-Optimus-1, MUSK)
     Row labels are horizontal and placed like y-axis labels.
     """
+
     fig, axes = plt.subplots(
         nrows=2,
         ncols=3,
@@ -75,14 +68,27 @@ def save_6panel_figure(
 
     fig.suptitle(title, fontsize=14, fontweight="bold", y=0.98)
 
+    # Leave space on the right for a colorbar
     plt.subplots_adjust(
-        left=0.10,
-        right=0.98,
+        left=0.12,
+        right=0.93,   # make room for legend
         top=0.90,
         bottom=0.05,
         wspace=0.0,
         hspace=0.0,
     )
+
+    # === ATTENTION LEGEND BAR (BLUE -> RED) ===
+    cmap = mpl.cm.coolwarm  # blue (low) -> red (high)
+    norm = mpl.colors.Normalize(vmin=0, vmax=1)
+    sm = mpl.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+
+    # Add small vertical colorbar on the right
+    cax = fig.add_axes([0.95, 0.15, 0.015, 0.7])  # [x, y, width, height]
+    cbar = fig.colorbar(sm, cax=cax)
+    cbar.set_label("Attention", fontsize=11)
+    cbar.ax.tick_params(labelsize=10)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(out_path, dpi=300, bbox_inches="tight")
@@ -136,4 +142,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

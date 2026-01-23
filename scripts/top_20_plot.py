@@ -14,7 +14,7 @@ OUT_FIG = "top20_feature_importance_remade.png"
 # These must match your training setup
 dim_musk  = 1024
 dim_hopt  = 1536
-dim_conch = 512
+dim_conch = 768
 
 topk = 20
 
@@ -53,18 +53,18 @@ labels = []
 for i in idx:
     if i < b0:
         sources.append("MUSK")
-        labels.append(f"MUSK[{i}]")
+        labels.append(f"MUSK-{i}")
     elif i < b1:
-        sources.append("H-Hoptimus-1")
-        labels.append(f"HOPT[{i - b0}]")
+        sources.append("Hoptimus-1")
+        labels.append(f"Hoptimus-1-{i - b0}")
     else:
-        sources.append("CONCHv1_5")
-        labels.append(f"CONCH[{i - b1}]")
+        sources.append("CONCHv1.5")
+        labels.append(f"CONCHv1.5-{i - b1}")
 
 colors = {
     "MUSK": "#1f77b4",
-    "H-Hoptimus-1": "#ff7f0e",
-    "CONCHv1_5": "#2ca02c",
+    "Hoptimus-1": "#ff7f0e",
+    "CONCHv1.5": "#2ca02c",
 }
 
 # -------------------------
@@ -87,8 +87,10 @@ plt.xlabel(
 # Bold title
 plt.title(
     f"Top {topk_eff} Individual Feature Importances",
+    fontsize=20,
     fontweight="bold"
 )
+
 
 plt.gca().invert_yaxis()
 

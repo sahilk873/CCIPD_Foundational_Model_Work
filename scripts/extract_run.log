@@ -1,0 +1,733 @@
+2025-12-25 17:25:10,131 [INFO] extract_aug:569 - slides_dir=/scratch/pioneer/users/sxk2517/TCGA-KICH-Pathology
+2025-12-25 17:25:10,132 [INFO] extract_aug:570 - coords_dir=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/patches
+2025-12-25 17:25:10,132 [INFO] extract_aug:571 - out_dir=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented
+2025-12-25 17:25:10,133 [INFO] extract_aug:572 - patch_encoder=hoptimus1 device=cuda:0 batch_limit=512
+2025-12-25 17:25:10,133 [INFO] extract_aug:573 - aug_types=['he_e_suppress']
+2025-12-25 17:25:10,133 [INFO] extract_aug:574 - levels=[2]
+2025-12-25 17:25:10,133 [INFO] extract_aug:575 - recursive=True skip_existing=True no_baseline=True
+2025-12-25 17:25:10,220 [INFO] extract_aug:585 - Discovered 118 slide files (extensions=['.mrxs', '.ndpi', '.scn', '.svs', '.svslide', '.tif', '.tiff', '.vms', '.vmu'])
+2025-12-25 17:25:10,340 [INFO] extract_aug:593 - Indexed 118 coords files under /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/patches (coords_ext=.h5)
+2025-12-25 17:25:10,340 [INFO] extract_aug:598 - Runs per slide: 1
+2025-12-25 17:25:10,340 [INFO] extract_aug:599 - Output subdirs: ['he_e_suppress_L2']
+2025-12-25 17:25:10,340 [INFO] extract_aug:601 - Loading encoder...
+2025-12-25 17:25:27,639 [INFO] extract_aug:607 - Encoder loaded.
+2025-12-25 17:25:27,647 [INFO] extract_aug:615 - Pre-building CustomInferenceEncoder objects...
+2025-12-25 17:25:27,705 [DEBUG] extract_aug:634 - Built encoder: he_e_suppress_L2 (hoptimus1_he_e_suppress_L2)
+2025-12-25 17:25:27,705 [INFO] extract_aug:647 - [1/118] Slide: TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.svs
+2025-12-25 17:25:27,705 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c_patches.h5
+2025-12-25 17:25:27,783 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:25:27,785 [INFO] extract_aug:678 - [RUN] TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c -> he_e_suppress_L2
+2025-12-25 17:28:31,846 [INFO] extract_aug:692 - [OK] TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8323-01Z-00-DX1.01d72f6a-cc87-4082-8af4-738250ec4d9c.h5
+2025-12-25 17:28:32,058 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:28:32,058 [INFO] extract_aug:647 - [2/118] Slide: TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.svs
+2025-12-25 17:28:32,059 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c_patches.h5
+2025-12-25 17:28:32,162 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:28:32,165 [INFO] extract_aug:678 - [RUN] TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c -> he_e_suppress_L2
+2025-12-25 17:30:55,163 [INFO] extract_aug:692 - [OK] TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8324-01Z-00-DX1.d99a7299-8f9b-4881-8324-50ed2d63358c.h5
+2025-12-25 17:30:55,357 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:30:55,357 [INFO] extract_aug:647 - [3/118] Slide: TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.svs
+2025-12-25 17:30:55,359 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad_patches.h5
+2025-12-25 17:30:55,481 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:30:55,483 [INFO] extract_aug:678 - [RUN] TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad -> he_e_suppress_L2
+2025-12-25 17:34:11,809 [INFO] extract_aug:692 - [OK] TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8325-01Z-00-DX1.330bdb6c-86ee-4577-9846-298080b4c2ad.h5
+2025-12-25 17:34:12,013 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:34:12,013 [INFO] extract_aug:647 - [4/118] Slide: TCGA-KL-8326-01Z-00-DX1.0fe86143-728f-4447-98a5-4a6d87ef398b.svs
+2025-12-25 17:34:12,014 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8326-01Z-00-DX1.0fe86143-728f-4447-98a5-4a6d87ef398b_patches.h5
+2025-12-25 17:34:12,048 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:34:12,050 [INFO] extract_aug:678 - [RUN] TCGA-KL-8326-01Z-00-DX1.0fe86143-728f-4447-98a5-4a6d87ef398b -> he_e_suppress_L2
+2025-12-25 17:37:23,947 [INFO] extract_aug:692 - [OK] TCGA-KL-8326-01Z-00-DX1.0fe86143-728f-4447-98a5-4a6d87ef398b.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8326-01Z-00-DX1.0fe86143-728f-4447-98a5-4a6d87ef398b.h5
+2025-12-25 17:37:24,279 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:37:24,279 [INFO] extract_aug:647 - [5/118] Slide: TCGA-KL-8327-01Z-00-DX1.f3009cdc-baf7-45ba-95a6-1b6311799cc8.svs
+2025-12-25 17:37:24,280 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8327-01Z-00-DX1.f3009cdc-baf7-45ba-95a6-1b6311799cc8_patches.h5
+2025-12-25 17:37:24,305 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:37:24,307 [INFO] extract_aug:678 - [RUN] TCGA-KL-8327-01Z-00-DX1.f3009cdc-baf7-45ba-95a6-1b6311799cc8 -> he_e_suppress_L2
+2025-12-25 17:40:37,528 [INFO] extract_aug:692 - [OK] TCGA-KL-8327-01Z-00-DX1.f3009cdc-baf7-45ba-95a6-1b6311799cc8.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8327-01Z-00-DX1.f3009cdc-baf7-45ba-95a6-1b6311799cc8.h5
+2025-12-25 17:40:37,706 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:40:37,706 [INFO] extract_aug:647 - [6/118] Slide: TCGA-KL-8328-01Z-00-DX1.497ddcb5-0436-4c76-a633-4744e24e6efe.svs
+2025-12-25 17:40:37,707 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8328-01Z-00-DX1.497ddcb5-0436-4c76-a633-4744e24e6efe_patches.h5
+2025-12-25 17:40:37,728 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:40:37,730 [INFO] extract_aug:678 - [RUN] TCGA-KL-8328-01Z-00-DX1.497ddcb5-0436-4c76-a633-4744e24e6efe -> he_e_suppress_L2
+2025-12-25 17:43:44,049 [INFO] extract_aug:692 - [OK] TCGA-KL-8328-01Z-00-DX1.497ddcb5-0436-4c76-a633-4744e24e6efe.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8328-01Z-00-DX1.497ddcb5-0436-4c76-a633-4744e24e6efe.h5
+2025-12-25 17:43:44,345 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:43:44,345 [INFO] extract_aug:647 - [7/118] Slide: TCGA-KL-8329-01Z-00-DX1.6c9000ef-34ff-4e44-84b3-755a868f6a4e.svs
+2025-12-25 17:43:44,346 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8329-01Z-00-DX1.6c9000ef-34ff-4e44-84b3-755a868f6a4e_patches.h5
+2025-12-25 17:43:44,370 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:43:44,373 [INFO] extract_aug:678 - [RUN] TCGA-KL-8329-01Z-00-DX1.6c9000ef-34ff-4e44-84b3-755a868f6a4e -> he_e_suppress_L2
+2025-12-25 17:46:02,573 [INFO] extract_aug:692 - [OK] TCGA-KL-8329-01Z-00-DX1.6c9000ef-34ff-4e44-84b3-755a868f6a4e.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8329-01Z-00-DX1.6c9000ef-34ff-4e44-84b3-755a868f6a4e.h5
+2025-12-25 17:46:02,769 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:46:02,769 [INFO] extract_aug:647 - [8/118] Slide: TCGA-KL-8330-01Z-00-DX1.30a61e5b-9379-498a-9aa4-60fd7a3a2f32.svs
+2025-12-25 17:46:02,770 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8330-01Z-00-DX1.30a61e5b-9379-498a-9aa4-60fd7a3a2f32_patches.h5
+2025-12-25 17:46:02,793 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:46:02,796 [INFO] extract_aug:678 - [RUN] TCGA-KL-8330-01Z-00-DX1.30a61e5b-9379-498a-9aa4-60fd7a3a2f32 -> he_e_suppress_L2
+2025-12-25 17:49:04,359 [INFO] extract_aug:692 - [OK] TCGA-KL-8330-01Z-00-DX1.30a61e5b-9379-498a-9aa4-60fd7a3a2f32.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8330-01Z-00-DX1.30a61e5b-9379-498a-9aa4-60fd7a3a2f32.h5
+2025-12-25 17:49:04,618 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:49:04,618 [INFO] extract_aug:647 - [9/118] Slide: TCGA-KL-8331-01Z-00-DX1.3c39f9b9-b639-4bca-a415-bf7427ea2ba5.svs
+2025-12-25 17:49:04,619 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8331-01Z-00-DX1.3c39f9b9-b639-4bca-a415-bf7427ea2ba5_patches.h5
+2025-12-25 17:49:04,653 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:49:04,656 [INFO] extract_aug:678 - [RUN] TCGA-KL-8331-01Z-00-DX1.3c39f9b9-b639-4bca-a415-bf7427ea2ba5 -> he_e_suppress_L2
+2025-12-25 17:51:28,927 [INFO] extract_aug:692 - [OK] TCGA-KL-8331-01Z-00-DX1.3c39f9b9-b639-4bca-a415-bf7427ea2ba5.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8331-01Z-00-DX1.3c39f9b9-b639-4bca-a415-bf7427ea2ba5.h5
+2025-12-25 17:51:29,177 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:51:29,177 [INFO] extract_aug:647 - [10/118] Slide: TCGA-KL-8332-01Z-00-DX1.3a375f5f-38e4-4022-8b36-5d8547870417.svs
+2025-12-25 17:51:29,178 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8332-01Z-00-DX1.3a375f5f-38e4-4022-8b36-5d8547870417_patches.h5
+2025-12-25 17:51:29,203 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:51:29,206 [INFO] extract_aug:678 - [RUN] TCGA-KL-8332-01Z-00-DX1.3a375f5f-38e4-4022-8b36-5d8547870417 -> he_e_suppress_L2
+2025-12-25 17:55:48,782 [INFO] extract_aug:692 - [OK] TCGA-KL-8332-01Z-00-DX1.3a375f5f-38e4-4022-8b36-5d8547870417.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8332-01Z-00-DX1.3a375f5f-38e4-4022-8b36-5d8547870417.h5
+2025-12-25 17:55:49,070 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:55:49,070 [INFO] extract_aug:647 - [11/118] Slide: TCGA-KL-8333-01Z-00-DX1.830e3f78-ba43-4b42-b2b5-f3be10d2b781.svs
+2025-12-25 17:55:49,071 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8333-01Z-00-DX1.830e3f78-ba43-4b42-b2b5-f3be10d2b781_patches.h5
+2025-12-25 17:55:49,101 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:55:49,104 [INFO] extract_aug:678 - [RUN] TCGA-KL-8333-01Z-00-DX1.830e3f78-ba43-4b42-b2b5-f3be10d2b781 -> he_e_suppress_L2
+2025-12-25 17:59:34,404 [INFO] extract_aug:692 - [OK] TCGA-KL-8333-01Z-00-DX1.830e3f78-ba43-4b42-b2b5-f3be10d2b781.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8333-01Z-00-DX1.830e3f78-ba43-4b42-b2b5-f3be10d2b781.h5
+2025-12-25 17:59:34,746 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 17:59:34,747 [INFO] extract_aug:647 - [12/118] Slide: TCGA-KL-8334-01Z-00-DX1.bc0857e2-938f-497a-ab63-38bc87e1af30.svs
+2025-12-25 17:59:34,750 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8334-01Z-00-DX1.bc0857e2-938f-497a-ab63-38bc87e1af30_patches.h5
+2025-12-25 17:59:34,790 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 17:59:34,793 [INFO] extract_aug:678 - [RUN] TCGA-KL-8334-01Z-00-DX1.bc0857e2-938f-497a-ab63-38bc87e1af30 -> he_e_suppress_L2
+2025-12-25 18:02:19,700 [INFO] extract_aug:692 - [OK] TCGA-KL-8334-01Z-00-DX1.bc0857e2-938f-497a-ab63-38bc87e1af30.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8334-01Z-00-DX1.bc0857e2-938f-497a-ab63-38bc87e1af30.h5
+2025-12-25 18:02:19,979 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:02:19,979 [INFO] extract_aug:647 - [13/118] Slide: TCGA-KL-8336-01Z-00-DX1.bfba9373-efa8-4573-8ee6-8ac961f0b65a.svs
+2025-12-25 18:02:19,981 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8336-01Z-00-DX1.bfba9373-efa8-4573-8ee6-8ac961f0b65a_patches.h5
+2025-12-25 18:02:20,010 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:02:20,013 [INFO] extract_aug:678 - [RUN] TCGA-KL-8336-01Z-00-DX1.bfba9373-efa8-4573-8ee6-8ac961f0b65a -> he_e_suppress_L2
+2025-12-25 18:04:50,123 [INFO] extract_aug:692 - [OK] TCGA-KL-8336-01Z-00-DX1.bfba9373-efa8-4573-8ee6-8ac961f0b65a.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8336-01Z-00-DX1.bfba9373-efa8-4573-8ee6-8ac961f0b65a.h5
+2025-12-25 18:04:50,410 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:04:50,410 [INFO] extract_aug:647 - [14/118] Slide: TCGA-KL-8337-01Z-00-DX1.78306056-304b-44c3-87cd-46d3785b7204.svs
+2025-12-25 18:04:50,411 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8337-01Z-00-DX1.78306056-304b-44c3-87cd-46d3785b7204_patches.h5
+2025-12-25 18:04:50,498 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:04:50,501 [INFO] extract_aug:678 - [RUN] TCGA-KL-8337-01Z-00-DX1.78306056-304b-44c3-87cd-46d3785b7204 -> he_e_suppress_L2
+2025-12-25 18:06:38,586 [INFO] extract_aug:692 - [OK] TCGA-KL-8337-01Z-00-DX1.78306056-304b-44c3-87cd-46d3785b7204.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8337-01Z-00-DX1.78306056-304b-44c3-87cd-46d3785b7204.h5
+2025-12-25 18:06:38,854 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:06:38,854 [INFO] extract_aug:647 - [15/118] Slide: TCGA-KL-8338-01Z-00-DX1.c3febc9e-8adc-49e0-9ce1-9d2dcc79c09c.svs
+2025-12-25 18:06:38,856 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8338-01Z-00-DX1.c3febc9e-8adc-49e0-9ce1-9d2dcc79c09c_patches.h5
+2025-12-25 18:06:38,877 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:06:38,880 [INFO] extract_aug:678 - [RUN] TCGA-KL-8338-01Z-00-DX1.c3febc9e-8adc-49e0-9ce1-9d2dcc79c09c -> he_e_suppress_L2
+2025-12-25 18:09:29,299 [INFO] extract_aug:692 - [OK] TCGA-KL-8338-01Z-00-DX1.c3febc9e-8adc-49e0-9ce1-9d2dcc79c09c.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8338-01Z-00-DX1.c3febc9e-8adc-49e0-9ce1-9d2dcc79c09c.h5
+2025-12-25 18:09:29,616 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:09:29,616 [INFO] extract_aug:647 - [16/118] Slide: TCGA-KL-8339-01Z-00-DX1.5826ea77-f0a1-4b47-acd7-62a6ba878dec.svs
+2025-12-25 18:09:29,617 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8339-01Z-00-DX1.5826ea77-f0a1-4b47-acd7-62a6ba878dec_patches.h5
+2025-12-25 18:09:29,639 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:09:29,642 [INFO] extract_aug:678 - [RUN] TCGA-KL-8339-01Z-00-DX1.5826ea77-f0a1-4b47-acd7-62a6ba878dec -> he_e_suppress_L2
+2025-12-25 18:13:36,458 [INFO] extract_aug:692 - [OK] TCGA-KL-8339-01Z-00-DX1.5826ea77-f0a1-4b47-acd7-62a6ba878dec.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8339-01Z-00-DX1.5826ea77-f0a1-4b47-acd7-62a6ba878dec.h5
+2025-12-25 18:13:36,651 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:13:36,651 [INFO] extract_aug:647 - [17/118] Slide: TCGA-KL-8340-01Z-00-DX1.85fe33f4-87d5-4e36-9389-d093cde30f80.svs
+2025-12-25 18:13:36,652 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8340-01Z-00-DX1.85fe33f4-87d5-4e36-9389-d093cde30f80_patches.h5
+2025-12-25 18:13:36,680 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:13:36,684 [INFO] extract_aug:678 - [RUN] TCGA-KL-8340-01Z-00-DX1.85fe33f4-87d5-4e36-9389-d093cde30f80 -> he_e_suppress_L2
+2025-12-25 18:16:02,013 [INFO] extract_aug:692 - [OK] TCGA-KL-8340-01Z-00-DX1.85fe33f4-87d5-4e36-9389-d093cde30f80.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8340-01Z-00-DX1.85fe33f4-87d5-4e36-9389-d093cde30f80.h5
+2025-12-25 18:16:02,229 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:16:02,229 [INFO] extract_aug:647 - [18/118] Slide: TCGA-KL-8341-01Z-00-DX1.eb0da21c-75f5-4de5-a753-12666eff0030.svs
+2025-12-25 18:16:02,232 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8341-01Z-00-DX1.eb0da21c-75f5-4de5-a753-12666eff0030_patches.h5
+2025-12-25 18:16:02,358 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:16:02,374 [INFO] extract_aug:678 - [RUN] TCGA-KL-8341-01Z-00-DX1.eb0da21c-75f5-4de5-a753-12666eff0030 -> he_e_suppress_L2
+2025-12-25 18:18:33,528 [INFO] extract_aug:692 - [OK] TCGA-KL-8341-01Z-00-DX1.eb0da21c-75f5-4de5-a753-12666eff0030.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8341-01Z-00-DX1.eb0da21c-75f5-4de5-a753-12666eff0030.h5
+2025-12-25 18:18:33,853 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:18:33,853 [INFO] extract_aug:647 - [19/118] Slide: TCGA-KL-8342-01Z-00-DX1.a0dac779-03d7-4041-9e56-b33e548d5567.svs
+2025-12-25 18:18:33,854 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8342-01Z-00-DX1.a0dac779-03d7-4041-9e56-b33e548d5567_patches.h5
+2025-12-25 18:18:33,880 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:18:33,885 [INFO] extract_aug:678 - [RUN] TCGA-KL-8342-01Z-00-DX1.a0dac779-03d7-4041-9e56-b33e548d5567 -> he_e_suppress_L2
+2025-12-25 18:21:22,325 [INFO] extract_aug:692 - [OK] TCGA-KL-8342-01Z-00-DX1.a0dac779-03d7-4041-9e56-b33e548d5567.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8342-01Z-00-DX1.a0dac779-03d7-4041-9e56-b33e548d5567.h5
+2025-12-25 18:21:22,642 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:21:22,642 [INFO] extract_aug:647 - [20/118] Slide: TCGA-KL-8343-01Z-00-DX1.e5aeff79-6d98-4c53-923e-a8fe204fbb43.svs
+2025-12-25 18:21:22,645 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8343-01Z-00-DX1.e5aeff79-6d98-4c53-923e-a8fe204fbb43_patches.h5
+2025-12-25 18:21:22,760 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:21:22,767 [INFO] extract_aug:678 - [RUN] TCGA-KL-8343-01Z-00-DX1.e5aeff79-6d98-4c53-923e-a8fe204fbb43 -> he_e_suppress_L2
+2025-12-25 18:24:34,478 [INFO] extract_aug:692 - [OK] TCGA-KL-8343-01Z-00-DX1.e5aeff79-6d98-4c53-923e-a8fe204fbb43.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8343-01Z-00-DX1.e5aeff79-6d98-4c53-923e-a8fe204fbb43.h5
+2025-12-25 18:24:34,678 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:24:34,678 [INFO] extract_aug:647 - [21/118] Slide: TCGA-KL-8344-01Z-00-DX1.fdcc3157-799f-42ed-99dc-b13d381d9230.svs
+2025-12-25 18:24:34,679 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8344-01Z-00-DX1.fdcc3157-799f-42ed-99dc-b13d381d9230_patches.h5
+2025-12-25 18:24:34,722 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:24:34,725 [INFO] extract_aug:678 - [RUN] TCGA-KL-8344-01Z-00-DX1.fdcc3157-799f-42ed-99dc-b13d381d9230 -> he_e_suppress_L2
+2025-12-25 18:27:38,667 [INFO] extract_aug:692 - [OK] TCGA-KL-8344-01Z-00-DX1.fdcc3157-799f-42ed-99dc-b13d381d9230.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8344-01Z-00-DX1.fdcc3157-799f-42ed-99dc-b13d381d9230.h5
+2025-12-25 18:27:38,955 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:27:38,955 [INFO] extract_aug:647 - [22/118] Slide: TCGA-KL-8345-01Z-00-DX1.e6265e77-7c45-4e54-a703-6d2013aba525.svs
+2025-12-25 18:27:38,956 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8345-01Z-00-DX1.e6265e77-7c45-4e54-a703-6d2013aba525_patches.h5
+2025-12-25 18:27:38,974 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:27:38,977 [INFO] extract_aug:678 - [RUN] TCGA-KL-8345-01Z-00-DX1.e6265e77-7c45-4e54-a703-6d2013aba525 -> he_e_suppress_L2
+2025-12-25 18:31:09,105 [INFO] extract_aug:692 - [OK] TCGA-KL-8345-01Z-00-DX1.e6265e77-7c45-4e54-a703-6d2013aba525.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8345-01Z-00-DX1.e6265e77-7c45-4e54-a703-6d2013aba525.h5
+2025-12-25 18:31:09,459 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:31:09,459 [INFO] extract_aug:647 - [23/118] Slide: TCGA-KL-8346-01Z-00-DX1.af2fc9c2-98b7-471f-9777-08c7cc8c734e.svs
+2025-12-25 18:31:09,461 [INFO] extract_aug:656 - Coords matched: TCGA-KL-8346-01Z-00-DX1.af2fc9c2-98b7-471f-9777-08c7cc8c734e_patches.h5
+2025-12-25 18:31:09,503 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:31:09,507 [INFO] extract_aug:678 - [RUN] TCGA-KL-8346-01Z-00-DX1.af2fc9c2-98b7-471f-9777-08c7cc8c734e -> he_e_suppress_L2
+2025-12-25 18:33:34,577 [INFO] extract_aug:692 - [OK] TCGA-KL-8346-01Z-00-DX1.af2fc9c2-98b7-471f-9777-08c7cc8c734e.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KL-8346-01Z-00-DX1.af2fc9c2-98b7-471f-9777-08c7cc8c734e.h5
+2025-12-25 18:33:34,837 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:33:34,837 [INFO] extract_aug:647 - [24/118] Slide: TCGA-KM-8438-01Z-00-DX1.1106521B-3563-43AA-8971-18560BAC51C4.svs
+2025-12-25 18:33:34,838 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8438-01Z-00-DX1.1106521B-3563-43AA-8971-18560BAC51C4_patches.h5
+2025-12-25 18:33:34,901 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:33:34,905 [INFO] extract_aug:678 - [RUN] TCGA-KM-8438-01Z-00-DX1.1106521B-3563-43AA-8971-18560BAC51C4 -> he_e_suppress_L2
+2025-12-25 18:35:44,632 [INFO] extract_aug:692 - [OK] TCGA-KM-8438-01Z-00-DX1.1106521B-3563-43AA-8971-18560BAC51C4.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8438-01Z-00-DX1.1106521B-3563-43AA-8971-18560BAC51C4.h5
+2025-12-25 18:35:44,933 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:35:44,933 [INFO] extract_aug:647 - [25/118] Slide: TCGA-KM-8439-01Z-00-DX1.F99904A8-21AB-476A-BFE5-B8FAB44FEB4D.svs
+2025-12-25 18:35:44,934 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8439-01Z-00-DX1.F99904A8-21AB-476A-BFE5-B8FAB44FEB4D_patches.h5
+2025-12-25 18:35:44,989 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:35:44,995 [INFO] extract_aug:678 - [RUN] TCGA-KM-8439-01Z-00-DX1.F99904A8-21AB-476A-BFE5-B8FAB44FEB4D -> he_e_suppress_L2
+2025-12-25 18:37:18,727 [INFO] extract_aug:692 - [OK] TCGA-KM-8439-01Z-00-DX1.F99904A8-21AB-476A-BFE5-B8FAB44FEB4D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8439-01Z-00-DX1.F99904A8-21AB-476A-BFE5-B8FAB44FEB4D.h5
+2025-12-25 18:37:19,032 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:37:19,032 [INFO] extract_aug:647 - [26/118] Slide: TCGA-KM-8440-01Z-00-DX1.528E053C-E8A4-464F-BE47-412836B1C31B.svs
+2025-12-25 18:37:19,033 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8440-01Z-00-DX1.528E053C-E8A4-464F-BE47-412836B1C31B_patches.h5
+2025-12-25 18:37:19,084 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:37:19,088 [INFO] extract_aug:678 - [RUN] TCGA-KM-8440-01Z-00-DX1.528E053C-E8A4-464F-BE47-412836B1C31B -> he_e_suppress_L2
+2025-12-25 18:40:18,152 [INFO] extract_aug:692 - [OK] TCGA-KM-8440-01Z-00-DX1.528E053C-E8A4-464F-BE47-412836B1C31B.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8440-01Z-00-DX1.528E053C-E8A4-464F-BE47-412836B1C31B.h5
+2025-12-25 18:40:18,377 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:40:18,378 [INFO] extract_aug:647 - [27/118] Slide: TCGA-KM-8441-01Z-00-DX1.D2CA0ADE-7EDF-49A6-989C-2761F1CFE340.svs
+2025-12-25 18:40:18,379 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8441-01Z-00-DX1.D2CA0ADE-7EDF-49A6-989C-2761F1CFE340_patches.h5
+2025-12-25 18:40:18,422 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:40:18,427 [INFO] extract_aug:678 - [RUN] TCGA-KM-8441-01Z-00-DX1.D2CA0ADE-7EDF-49A6-989C-2761F1CFE340 -> he_e_suppress_L2
+2025-12-25 18:43:28,351 [INFO] extract_aug:692 - [OK] TCGA-KM-8441-01Z-00-DX1.D2CA0ADE-7EDF-49A6-989C-2761F1CFE340.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8441-01Z-00-DX1.D2CA0ADE-7EDF-49A6-989C-2761F1CFE340.h5
+2025-12-25 18:43:28,711 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:43:28,711 [INFO] extract_aug:647 - [28/118] Slide: TCGA-KM-8442-01Z-00-DX1.46835CE2-819D-4887-9633-422BC9F5E366.svs
+2025-12-25 18:43:28,712 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8442-01Z-00-DX1.46835CE2-819D-4887-9633-422BC9F5E366_patches.h5
+2025-12-25 18:43:28,741 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:43:28,746 [INFO] extract_aug:678 - [RUN] TCGA-KM-8442-01Z-00-DX1.46835CE2-819D-4887-9633-422BC9F5E366 -> he_e_suppress_L2
+2025-12-25 18:47:04,081 [INFO] extract_aug:692 - [OK] TCGA-KM-8442-01Z-00-DX1.46835CE2-819D-4887-9633-422BC9F5E366.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8442-01Z-00-DX1.46835CE2-819D-4887-9633-422BC9F5E366.h5
+2025-12-25 18:47:04,313 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:47:04,313 [INFO] extract_aug:647 - [29/118] Slide: TCGA-KM-8443-01Z-00-DX1.A97D876A-6453-4335-B805-C54529D3915F.svs
+2025-12-25 18:47:04,314 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8443-01Z-00-DX1.A97D876A-6453-4335-B805-C54529D3915F_patches.h5
+2025-12-25 18:47:04,357 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:47:04,362 [INFO] extract_aug:678 - [RUN] TCGA-KM-8443-01Z-00-DX1.A97D876A-6453-4335-B805-C54529D3915F -> he_e_suppress_L2
+2025-12-25 18:49:50,718 [INFO] extract_aug:692 - [OK] TCGA-KM-8443-01Z-00-DX1.A97D876A-6453-4335-B805-C54529D3915F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8443-01Z-00-DX1.A97D876A-6453-4335-B805-C54529D3915F.h5
+2025-12-25 18:49:51,001 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:49:51,001 [INFO] extract_aug:647 - [30/118] Slide: TCGA-KM-8476-01Z-00-DX1.BDC7C35E-1B36-4CF6-9CF0-B63C68724EF2.svs
+2025-12-25 18:49:51,002 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8476-01Z-00-DX1.BDC7C35E-1B36-4CF6-9CF0-B63C68724EF2_patches.h5
+2025-12-25 18:49:51,099 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:49:51,104 [INFO] extract_aug:678 - [RUN] TCGA-KM-8476-01Z-00-DX1.BDC7C35E-1B36-4CF6-9CF0-B63C68724EF2 -> he_e_suppress_L2
+2025-12-25 18:51:21,916 [INFO] extract_aug:692 - [OK] TCGA-KM-8476-01Z-00-DX1.BDC7C35E-1B36-4CF6-9CF0-B63C68724EF2.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8476-01Z-00-DX1.BDC7C35E-1B36-4CF6-9CF0-B63C68724EF2.h5
+2025-12-25 18:51:22,232 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:51:22,232 [INFO] extract_aug:647 - [31/118] Slide: TCGA-KM-8477-01Z-00-DX1.5419F74B-EE1C-47C3-A5A7-B22768E613A8.svs
+2025-12-25 18:51:22,235 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8477-01Z-00-DX1.5419F74B-EE1C-47C3-A5A7-B22768E613A8_patches.h5
+2025-12-25 18:51:22,297 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:51:22,302 [INFO] extract_aug:678 - [RUN] TCGA-KM-8477-01Z-00-DX1.5419F74B-EE1C-47C3-A5A7-B22768E613A8 -> he_e_suppress_L2
+2025-12-25 18:54:42,986 [INFO] extract_aug:692 - [OK] TCGA-KM-8477-01Z-00-DX1.5419F74B-EE1C-47C3-A5A7-B22768E613A8.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8477-01Z-00-DX1.5419F74B-EE1C-47C3-A5A7-B22768E613A8.h5
+2025-12-25 18:54:43,255 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:54:43,255 [INFO] extract_aug:647 - [32/118] Slide: TCGA-KM-8639-01Z-00-DX1.13E1C61C-16F6-4FC5-B1D2-DDBF7DE16639.svs
+2025-12-25 18:54:43,257 [INFO] extract_aug:656 - Coords matched: TCGA-KM-8639-01Z-00-DX1.13E1C61C-16F6-4FC5-B1D2-DDBF7DE16639_patches.h5
+2025-12-25 18:54:43,294 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:54:43,299 [INFO] extract_aug:678 - [RUN] TCGA-KM-8639-01Z-00-DX1.13E1C61C-16F6-4FC5-B1D2-DDBF7DE16639 -> he_e_suppress_L2
+2025-12-25 18:58:27,123 [INFO] extract_aug:692 - [OK] TCGA-KM-8639-01Z-00-DX1.13E1C61C-16F6-4FC5-B1D2-DDBF7DE16639.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-8639-01Z-00-DX1.13E1C61C-16F6-4FC5-B1D2-DDBF7DE16639.h5
+2025-12-25 18:58:27,447 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 18:58:27,448 [INFO] extract_aug:647 - [33/118] Slide: TCGA-KM-A7QA-01Z-00-DX1.971BE7D3-6E83-44C9-AFC4-50FE85E9C982.svs
+2025-12-25 18:58:27,449 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QA-01Z-00-DX1.971BE7D3-6E83-44C9-AFC4-50FE85E9C982_patches.h5
+2025-12-25 18:58:27,504 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 18:58:27,509 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QA-01Z-00-DX1.971BE7D3-6E83-44C9-AFC4-50FE85E9C982 -> he_e_suppress_L2
+2025-12-25 19:00:04,476 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QA-01Z-00-DX1.971BE7D3-6E83-44C9-AFC4-50FE85E9C982.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QA-01Z-00-DX1.971BE7D3-6E83-44C9-AFC4-50FE85E9C982.h5
+2025-12-25 19:00:04,785 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:00:04,785 [INFO] extract_aug:647 - [34/118] Slide: TCGA-KM-A7QB-01Z-00-DX1.CC441A0F-8A5C-4406-8A8D-86CB62E7B114.svs
+2025-12-25 19:00:04,788 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QB-01Z-00-DX1.CC441A0F-8A5C-4406-8A8D-86CB62E7B114_patches.h5
+2025-12-25 19:00:04,911 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:00:04,917 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QB-01Z-00-DX1.CC441A0F-8A5C-4406-8A8D-86CB62E7B114 -> he_e_suppress_L2
+2025-12-25 19:02:31,349 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QB-01Z-00-DX1.CC441A0F-8A5C-4406-8A8D-86CB62E7B114.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QB-01Z-00-DX1.CC441A0F-8A5C-4406-8A8D-86CB62E7B114.h5
+2025-12-25 19:02:31,575 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:02:31,575 [INFO] extract_aug:647 - [35/118] Slide: TCGA-KM-A7QC-01Z-00-DX1.4B44EEAA-FA1C-47F9-852F-68EE45E09D5E.svs
+2025-12-25 19:02:31,577 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QC-01Z-00-DX1.4B44EEAA-FA1C-47F9-852F-68EE45E09D5E_patches.h5
+2025-12-25 19:02:31,662 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:02:31,668 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QC-01Z-00-DX1.4B44EEAA-FA1C-47F9-852F-68EE45E09D5E -> he_e_suppress_L2
+2025-12-25 19:05:37,411 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QC-01Z-00-DX1.4B44EEAA-FA1C-47F9-852F-68EE45E09D5E.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QC-01Z-00-DX1.4B44EEAA-FA1C-47F9-852F-68EE45E09D5E.h5
+2025-12-25 19:05:37,642 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:05:37,642 [INFO] extract_aug:647 - [36/118] Slide: TCGA-KM-A7QD-01Z-00-DX1.E1FCB533-0017-4A90-9835-6CD26FEA30CA.svs
+2025-12-25 19:05:37,643 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QD-01Z-00-DX1.E1FCB533-0017-4A90-9835-6CD26FEA30CA_patches.h5
+2025-12-25 19:05:37,680 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:05:37,685 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QD-01Z-00-DX1.E1FCB533-0017-4A90-9835-6CD26FEA30CA -> he_e_suppress_L2
+2025-12-25 19:08:33,584 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QD-01Z-00-DX1.E1FCB533-0017-4A90-9835-6CD26FEA30CA.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QD-01Z-00-DX1.E1FCB533-0017-4A90-9835-6CD26FEA30CA.h5
+2025-12-25 19:08:33,919 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:08:33,920 [INFO] extract_aug:647 - [37/118] Slide: TCGA-KM-A7QE-01Z-00-DX1.82CBD529-FBB8-4969-A6E0-B563F0C9D73B.svs
+2025-12-25 19:08:33,921 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QE-01Z-00-DX1.82CBD529-FBB8-4969-A6E0-B563F0C9D73B_patches.h5
+2025-12-25 19:08:33,957 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:08:33,963 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QE-01Z-00-DX1.82CBD529-FBB8-4969-A6E0-B563F0C9D73B -> he_e_suppress_L2
+2025-12-25 19:11:24,510 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QE-01Z-00-DX1.82CBD529-FBB8-4969-A6E0-B563F0C9D73B.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QE-01Z-00-DX1.82CBD529-FBB8-4969-A6E0-B563F0C9D73B.h5
+2025-12-25 19:11:24,787 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:11:24,787 [INFO] extract_aug:647 - [38/118] Slide: TCGA-KM-A7QG-01Z-00-DX1.7275EEF1-1D4E-4471-89C3-5B99EC03515E.svs
+2025-12-25 19:11:24,788 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QG-01Z-00-DX1.7275EEF1-1D4E-4471-89C3-5B99EC03515E_patches.h5
+2025-12-25 19:11:24,829 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:11:24,834 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QG-01Z-00-DX1.7275EEF1-1D4E-4471-89C3-5B99EC03515E -> he_e_suppress_L2
+2025-12-25 19:14:50,870 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QG-01Z-00-DX1.7275EEF1-1D4E-4471-89C3-5B99EC03515E.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QG-01Z-00-DX1.7275EEF1-1D4E-4471-89C3-5B99EC03515E.h5
+2025-12-25 19:14:51,106 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:14:51,106 [INFO] extract_aug:647 - [39/118] Slide: TCGA-KM-A7QH-01Z-00-DX1.8CBB8760-A00D-4289-AD09-959FEC2EC03C.svs
+2025-12-25 19:14:51,109 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QH-01Z-00-DX1.8CBB8760-A00D-4289-AD09-959FEC2EC03C_patches.h5
+2025-12-25 19:14:51,297 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:14:51,303 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QH-01Z-00-DX1.8CBB8760-A00D-4289-AD09-959FEC2EC03C -> he_e_suppress_L2
+2025-12-25 19:16:02,699 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QH-01Z-00-DX1.8CBB8760-A00D-4289-AD09-959FEC2EC03C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QH-01Z-00-DX1.8CBB8760-A00D-4289-AD09-959FEC2EC03C.h5
+2025-12-25 19:16:02,941 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:16:02,941 [INFO] extract_aug:647 - [40/118] Slide: TCGA-KM-A7QI-01Z-00-DX1.D5284A3E-891C-4750-BE93-C09C7F23C95C.svs
+2025-12-25 19:16:02,944 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QI-01Z-00-DX1.D5284A3E-891C-4750-BE93-C09C7F23C95C_patches.h5
+2025-12-25 19:16:03,053 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:16:03,060 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QI-01Z-00-DX1.D5284A3E-891C-4750-BE93-C09C7F23C95C -> he_e_suppress_L2
+2025-12-25 19:18:08,941 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QI-01Z-00-DX1.D5284A3E-891C-4750-BE93-C09C7F23C95C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QI-01Z-00-DX1.D5284A3E-891C-4750-BE93-C09C7F23C95C.h5
+2025-12-25 19:18:09,201 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:18:09,201 [INFO] extract_aug:647 - [41/118] Slide: TCGA-KM-A7QJ-01Z-00-DX1.5011C41F-4385-4AB2-8AFE-5409125EDC31.svs
+2025-12-25 19:18:09,202 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QJ-01Z-00-DX1.5011C41F-4385-4AB2-8AFE-5409125EDC31_patches.h5
+2025-12-25 19:18:09,230 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:18:09,235 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QJ-01Z-00-DX1.5011C41F-4385-4AB2-8AFE-5409125EDC31 -> he_e_suppress_L2
+2025-12-25 19:21:10,189 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QJ-01Z-00-DX1.5011C41F-4385-4AB2-8AFE-5409125EDC31.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QJ-01Z-00-DX1.5011C41F-4385-4AB2-8AFE-5409125EDC31.h5
+2025-12-25 19:21:10,381 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:21:10,381 [INFO] extract_aug:647 - [42/118] Slide: TCGA-KM-A7QK-01Z-00-DX1.8D69EA34-F28A-4267-8A82-159FB2B7008B.svs
+2025-12-25 19:21:10,382 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QK-01Z-00-DX1.8D69EA34-F28A-4267-8A82-159FB2B7008B_patches.h5
+2025-12-25 19:21:10,404 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:21:10,409 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QK-01Z-00-DX1.8D69EA34-F28A-4267-8A82-159FB2B7008B -> he_e_suppress_L2
+2025-12-25 19:23:32,279 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QK-01Z-00-DX1.8D69EA34-F28A-4267-8A82-159FB2B7008B.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QK-01Z-00-DX1.8D69EA34-F28A-4267-8A82-159FB2B7008B.h5
+2025-12-25 19:23:32,628 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:23:32,628 [INFO] extract_aug:647 - [43/118] Slide: TCGA-KM-A7QL-01Z-00-DX1.2447532C-3635-4F36-952E-F5A5A566A7DB.svs
+2025-12-25 19:23:32,629 [INFO] extract_aug:656 - Coords matched: TCGA-KM-A7QL-01Z-00-DX1.2447532C-3635-4F36-952E-F5A5A566A7DB_patches.h5
+2025-12-25 19:23:32,656 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:23:32,660 [INFO] extract_aug:678 - [RUN] TCGA-KM-A7QL-01Z-00-DX1.2447532C-3635-4F36-952E-F5A5A566A7DB -> he_e_suppress_L2
+2025-12-25 19:26:06,231 [INFO] extract_aug:692 - [OK] TCGA-KM-A7QL-01Z-00-DX1.2447532C-3635-4F36-952E-F5A5A566A7DB.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KM-A7QL-01Z-00-DX1.2447532C-3635-4F36-952E-F5A5A566A7DB.h5
+2025-12-25 19:26:06,528 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:26:06,528 [INFO] extract_aug:647 - [44/118] Slide: TCGA-KN-8418-01Z-00-DX1.376DD52D-EF98-4564-B8E3-FE4D219A5C88.svs
+2025-12-25 19:26:06,529 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8418-01Z-00-DX1.376DD52D-EF98-4564-B8E3-FE4D219A5C88_patches.h5
+2025-12-25 19:26:06,572 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:26:06,577 [INFO] extract_aug:678 - [RUN] TCGA-KN-8418-01Z-00-DX1.376DD52D-EF98-4564-B8E3-FE4D219A5C88 -> he_e_suppress_L2
+2025-12-25 19:29:32,716 [INFO] extract_aug:692 - [OK] TCGA-KN-8418-01Z-00-DX1.376DD52D-EF98-4564-B8E3-FE4D219A5C88.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8418-01Z-00-DX1.376DD52D-EF98-4564-B8E3-FE4D219A5C88.h5
+2025-12-25 19:29:33,031 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:29:33,031 [INFO] extract_aug:647 - [45/118] Slide: TCGA-KN-8419-01Z-00-DX1.15311E57-CCC5-4D15-88DC-0ED9FD2CF2D0.svs
+2025-12-25 19:29:33,032 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8419-01Z-00-DX1.15311E57-CCC5-4D15-88DC-0ED9FD2CF2D0_patches.h5
+2025-12-25 19:29:33,061 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:29:33,066 [INFO] extract_aug:678 - [RUN] TCGA-KN-8419-01Z-00-DX1.15311E57-CCC5-4D15-88DC-0ED9FD2CF2D0 -> he_e_suppress_L2
+2025-12-25 19:32:47,477 [INFO] extract_aug:692 - [OK] TCGA-KN-8419-01Z-00-DX1.15311E57-CCC5-4D15-88DC-0ED9FD2CF2D0.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8419-01Z-00-DX1.15311E57-CCC5-4D15-88DC-0ED9FD2CF2D0.h5
+2025-12-25 19:32:47,851 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:32:47,851 [INFO] extract_aug:647 - [46/118] Slide: TCGA-KN-8421-01Z-00-DX1.A90EB3F7-DE68-4078-BB5B-B35561F96071.svs
+2025-12-25 19:32:47,852 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8421-01Z-00-DX1.A90EB3F7-DE68-4078-BB5B-B35561F96071_patches.h5
+2025-12-25 19:32:47,876 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:32:47,882 [INFO] extract_aug:678 - [RUN] TCGA-KN-8421-01Z-00-DX1.A90EB3F7-DE68-4078-BB5B-B35561F96071 -> he_e_suppress_L2
+2025-12-25 19:33:34,055 [INFO] extract_aug:692 - [OK] TCGA-KN-8421-01Z-00-DX1.A90EB3F7-DE68-4078-BB5B-B35561F96071.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8421-01Z-00-DX1.A90EB3F7-DE68-4078-BB5B-B35561F96071.h5
+2025-12-25 19:33:34,311 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:33:34,312 [INFO] extract_aug:647 - [47/118] Slide: TCGA-KN-8422-01Z-00-DX1.26F9BF86-6D2C-4C99-BFEB-A3708AD48734.svs
+2025-12-25 19:33:34,312 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8422-01Z-00-DX1.26F9BF86-6D2C-4C99-BFEB-A3708AD48734_patches.h5
+2025-12-25 19:33:34,392 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:33:34,400 [INFO] extract_aug:678 - [RUN] TCGA-KN-8422-01Z-00-DX1.26F9BF86-6D2C-4C99-BFEB-A3708AD48734 -> he_e_suppress_L2
+2025-12-25 19:37:27,308 [INFO] extract_aug:692 - [OK] TCGA-KN-8422-01Z-00-DX1.26F9BF86-6D2C-4C99-BFEB-A3708AD48734.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8422-01Z-00-DX1.26F9BF86-6D2C-4C99-BFEB-A3708AD48734.h5
+2025-12-25 19:37:27,499 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:37:27,500 [INFO] extract_aug:647 - [48/118] Slide: TCGA-KN-8423-01Z-00-DX1.EE5F8790-38EB-437F-9C5A-BC6FB58F6ACD.svs
+2025-12-25 19:37:27,500 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8423-01Z-00-DX1.EE5F8790-38EB-437F-9C5A-BC6FB58F6ACD_patches.h5
+2025-12-25 19:37:27,529 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:37:27,536 [INFO] extract_aug:678 - [RUN] TCGA-KN-8423-01Z-00-DX1.EE5F8790-38EB-437F-9C5A-BC6FB58F6ACD -> he_e_suppress_L2
+2025-12-25 19:40:27,801 [INFO] extract_aug:692 - [OK] TCGA-KN-8423-01Z-00-DX1.EE5F8790-38EB-437F-9C5A-BC6FB58F6ACD.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8423-01Z-00-DX1.EE5F8790-38EB-437F-9C5A-BC6FB58F6ACD.h5
+2025-12-25 19:40:28,021 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:40:28,021 [INFO] extract_aug:647 - [49/118] Slide: TCGA-KN-8424-01Z-00-DX1.4EC063E2-A058-4610-9B47-FCE2172955B6.svs
+2025-12-25 19:40:28,022 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8424-01Z-00-DX1.4EC063E2-A058-4610-9B47-FCE2172955B6_patches.h5
+2025-12-25 19:40:28,052 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:40:28,057 [INFO] extract_aug:678 - [RUN] TCGA-KN-8424-01Z-00-DX1.4EC063E2-A058-4610-9B47-FCE2172955B6 -> he_e_suppress_L2
+2025-12-25 19:43:36,701 [INFO] extract_aug:692 - [OK] TCGA-KN-8424-01Z-00-DX1.4EC063E2-A058-4610-9B47-FCE2172955B6.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8424-01Z-00-DX1.4EC063E2-A058-4610-9B47-FCE2172955B6.h5
+2025-12-25 19:43:37,032 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:43:37,033 [INFO] extract_aug:647 - [50/118] Slide: TCGA-KN-8425-01Z-00-DX1.1D2AB7D2-6AC3-4785-9FBC-40AEED5DE558.svs
+2025-12-25 19:43:37,034 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8425-01Z-00-DX1.1D2AB7D2-6AC3-4785-9FBC-40AEED5DE558_patches.h5
+2025-12-25 19:43:37,151 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:43:37,156 [INFO] extract_aug:678 - [RUN] TCGA-KN-8425-01Z-00-DX1.1D2AB7D2-6AC3-4785-9FBC-40AEED5DE558 -> he_e_suppress_L2
+2025-12-25 19:45:17,606 [INFO] extract_aug:692 - [OK] TCGA-KN-8425-01Z-00-DX1.1D2AB7D2-6AC3-4785-9FBC-40AEED5DE558.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8425-01Z-00-DX1.1D2AB7D2-6AC3-4785-9FBC-40AEED5DE558.h5
+2025-12-25 19:45:17,977 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:45:17,978 [INFO] extract_aug:647 - [51/118] Slide: TCGA-KN-8426-01Z-00-DX1.FA31AC9B-A378-467E-97CB-7EFA06B804A1.svs
+2025-12-25 19:45:17,979 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8426-01Z-00-DX1.FA31AC9B-A378-467E-97CB-7EFA06B804A1_patches.h5
+2025-12-25 19:45:18,047 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:45:18,052 [INFO] extract_aug:678 - [RUN] TCGA-KN-8426-01Z-00-DX1.FA31AC9B-A378-467E-97CB-7EFA06B804A1 -> he_e_suppress_L2
+2025-12-25 19:46:36,331 [INFO] extract_aug:692 - [OK] TCGA-KN-8426-01Z-00-DX1.FA31AC9B-A378-467E-97CB-7EFA06B804A1.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8426-01Z-00-DX1.FA31AC9B-A378-467E-97CB-7EFA06B804A1.h5
+2025-12-25 19:46:36,657 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:46:36,658 [INFO] extract_aug:647 - [52/118] Slide: TCGA-KN-8427-01Z-00-DX1.8B2A5B0B-977E-4ED9-A9D2-23FFFBA43B7C.svs
+2025-12-25 19:46:36,659 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8427-01Z-00-DX1.8B2A5B0B-977E-4ED9-A9D2-23FFFBA43B7C_patches.h5
+2025-12-25 19:46:36,695 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:46:36,701 [INFO] extract_aug:678 - [RUN] TCGA-KN-8427-01Z-00-DX1.8B2A5B0B-977E-4ED9-A9D2-23FFFBA43B7C -> he_e_suppress_L2
+2025-12-25 19:49:21,153 [INFO] extract_aug:692 - [OK] TCGA-KN-8427-01Z-00-DX1.8B2A5B0B-977E-4ED9-A9D2-23FFFBA43B7C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8427-01Z-00-DX1.8B2A5B0B-977E-4ED9-A9D2-23FFFBA43B7C.h5
+2025-12-25 19:49:21,403 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:49:21,404 [INFO] extract_aug:647 - [53/118] Slide: TCGA-KN-8428-01Z-00-DX1.CA71B178-286E-4EDF-9B37-1D2CEE07F9F4.svs
+2025-12-25 19:49:21,405 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8428-01Z-00-DX1.CA71B178-286E-4EDF-9B37-1D2CEE07F9F4_patches.h5
+2025-12-25 19:49:21,443 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:49:21,449 [INFO] extract_aug:678 - [RUN] TCGA-KN-8428-01Z-00-DX1.CA71B178-286E-4EDF-9B37-1D2CEE07F9F4 -> he_e_suppress_L2
+2025-12-25 19:52:10,303 [INFO] extract_aug:692 - [OK] TCGA-KN-8428-01Z-00-DX1.CA71B178-286E-4EDF-9B37-1D2CEE07F9F4.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8428-01Z-00-DX1.CA71B178-286E-4EDF-9B37-1D2CEE07F9F4.h5
+2025-12-25 19:52:10,585 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:52:10,585 [INFO] extract_aug:647 - [54/118] Slide: TCGA-KN-8429-01Z-00-DX1.473181A7-5F6A-4B68-B6E0-44EF34F67DA0.svs
+2025-12-25 19:52:10,587 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8429-01Z-00-DX1.473181A7-5F6A-4B68-B6E0-44EF34F67DA0_patches.h5
+2025-12-25 19:52:10,617 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:52:10,624 [INFO] extract_aug:678 - [RUN] TCGA-KN-8429-01Z-00-DX1.473181A7-5F6A-4B68-B6E0-44EF34F67DA0 -> he_e_suppress_L2
+2025-12-25 19:55:41,724 [INFO] extract_aug:692 - [OK] TCGA-KN-8429-01Z-00-DX1.473181A7-5F6A-4B68-B6E0-44EF34F67DA0.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8429-01Z-00-DX1.473181A7-5F6A-4B68-B6E0-44EF34F67DA0.h5
+2025-12-25 19:55:41,912 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:55:41,913 [INFO] extract_aug:647 - [55/118] Slide: TCGA-KN-8430-01Z-00-DX1.8192F868-A504-44E0-929B-7527EB37ECAB.svs
+2025-12-25 19:55:41,915 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8430-01Z-00-DX1.8192F868-A504-44E0-929B-7527EB37ECAB_patches.h5
+2025-12-25 19:55:41,985 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:55:41,992 [INFO] extract_aug:678 - [RUN] TCGA-KN-8430-01Z-00-DX1.8192F868-A504-44E0-929B-7527EB37ECAB -> he_e_suppress_L2
+2025-12-25 19:59:27,962 [INFO] extract_aug:692 - [OK] TCGA-KN-8430-01Z-00-DX1.8192F868-A504-44E0-929B-7527EB37ECAB.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8430-01Z-00-DX1.8192F868-A504-44E0-929B-7527EB37ECAB.h5
+2025-12-25 19:59:28,294 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 19:59:28,294 [INFO] extract_aug:647 - [56/118] Slide: TCGA-KN-8431-01Z-00-DX1.BAEA4392-5CD8-4B28-8A47-E9DCE88F5820.svs
+2025-12-25 19:59:28,295 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8431-01Z-00-DX1.BAEA4392-5CD8-4B28-8A47-E9DCE88F5820_patches.h5
+2025-12-25 19:59:28,384 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 19:59:28,390 [INFO] extract_aug:678 - [RUN] TCGA-KN-8431-01Z-00-DX1.BAEA4392-5CD8-4B28-8A47-E9DCE88F5820 -> he_e_suppress_L2
+2025-12-25 20:01:10,455 [INFO] extract_aug:692 - [OK] TCGA-KN-8431-01Z-00-DX1.BAEA4392-5CD8-4B28-8A47-E9DCE88F5820.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8431-01Z-00-DX1.BAEA4392-5CD8-4B28-8A47-E9DCE88F5820.h5
+2025-12-25 20:01:10,653 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:01:10,653 [INFO] extract_aug:647 - [57/118] Slide: TCGA-KN-8432-01Z-00-DX1.D4136A31-C2DC-432C-96FB-FD5EE47ECC0D.svs
+2025-12-25 20:01:10,654 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8432-01Z-00-DX1.D4136A31-C2DC-432C-96FB-FD5EE47ECC0D_patches.h5
+2025-12-25 20:01:10,747 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:01:10,754 [INFO] extract_aug:678 - [RUN] TCGA-KN-8432-01Z-00-DX1.D4136A31-C2DC-432C-96FB-FD5EE47ECC0D -> he_e_suppress_L2
+2025-12-25 20:01:40,700 [INFO] extract_aug:692 - [OK] TCGA-KN-8432-01Z-00-DX1.D4136A31-C2DC-432C-96FB-FD5EE47ECC0D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8432-01Z-00-DX1.D4136A31-C2DC-432C-96FB-FD5EE47ECC0D.h5
+2025-12-25 20:01:40,962 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:01:40,962 [INFO] extract_aug:647 - [58/118] Slide: TCGA-KN-8433-01Z-00-DX1.4AE64138-3E04-46AC-B905-52CB71261230.svs
+2025-12-25 20:01:40,963 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8433-01Z-00-DX1.4AE64138-3E04-46AC-B905-52CB71261230_patches.h5
+2025-12-25 20:01:41,032 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:01:41,039 [INFO] extract_aug:678 - [RUN] TCGA-KN-8433-01Z-00-DX1.4AE64138-3E04-46AC-B905-52CB71261230 -> he_e_suppress_L2
+2025-12-25 20:02:12,367 [INFO] extract_aug:692 - [OK] TCGA-KN-8433-01Z-00-DX1.4AE64138-3E04-46AC-B905-52CB71261230.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8433-01Z-00-DX1.4AE64138-3E04-46AC-B905-52CB71261230.h5
+2025-12-25 20:02:12,701 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:02:12,701 [INFO] extract_aug:647 - [59/118] Slide: TCGA-KN-8434-01Z-00-DX1.EC2C42B5-DB0D-44A3-8224-E982201AE337.svs
+2025-12-25 20:02:12,702 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8434-01Z-00-DX1.EC2C42B5-DB0D-44A3-8224-E982201AE337_patches.h5
+2025-12-25 20:02:12,730 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:02:12,737 [INFO] extract_aug:678 - [RUN] TCGA-KN-8434-01Z-00-DX1.EC2C42B5-DB0D-44A3-8224-E982201AE337 -> he_e_suppress_L2
+2025-12-25 20:02:57,692 [INFO] extract_aug:692 - [OK] TCGA-KN-8434-01Z-00-DX1.EC2C42B5-DB0D-44A3-8224-E982201AE337.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8434-01Z-00-DX1.EC2C42B5-DB0D-44A3-8224-E982201AE337.h5
+2025-12-25 20:02:57,932 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:02:57,932 [INFO] extract_aug:647 - [60/118] Slide: TCGA-KN-8435-01Z-00-DX1.99219621-93BA-448B-8AFE-AEECA888BDA4.svs
+2025-12-25 20:02:57,933 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8435-01Z-00-DX1.99219621-93BA-448B-8AFE-AEECA888BDA4_patches.h5
+2025-12-25 20:02:58,020 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:02:58,027 [INFO] extract_aug:678 - [RUN] TCGA-KN-8435-01Z-00-DX1.99219621-93BA-448B-8AFE-AEECA888BDA4 -> he_e_suppress_L2
+2025-12-25 20:04:44,350 [INFO] extract_aug:692 - [OK] TCGA-KN-8435-01Z-00-DX1.99219621-93BA-448B-8AFE-AEECA888BDA4.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8435-01Z-00-DX1.99219621-93BA-448B-8AFE-AEECA888BDA4.h5
+2025-12-25 20:04:44,614 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:04:44,615 [INFO] extract_aug:647 - [61/118] Slide: TCGA-KN-8436-01Z-00-DX1.0CCCF11D-ED0E-4575-8F25-813415391524.svs
+2025-12-25 20:04:44,616 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8436-01Z-00-DX1.0CCCF11D-ED0E-4575-8F25-813415391524_patches.h5
+2025-12-25 20:04:44,649 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:04:44,655 [INFO] extract_aug:678 - [RUN] TCGA-KN-8436-01Z-00-DX1.0CCCF11D-ED0E-4575-8F25-813415391524 -> he_e_suppress_L2
+2025-12-25 20:07:37,045 [INFO] extract_aug:692 - [OK] TCGA-KN-8436-01Z-00-DX1.0CCCF11D-ED0E-4575-8F25-813415391524.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8436-01Z-00-DX1.0CCCF11D-ED0E-4575-8F25-813415391524.h5
+2025-12-25 20:07:37,480 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:07:37,480 [INFO] extract_aug:647 - [62/118] Slide: TCGA-KN-8437-01Z-00-DX1.573F2559-097F-4A87-9AB6-55BF2FEB724F.svs
+2025-12-25 20:07:37,481 [INFO] extract_aug:656 - Coords matched: TCGA-KN-8437-01Z-00-DX1.573F2559-097F-4A87-9AB6-55BF2FEB724F_patches.h5
+2025-12-25 20:07:37,584 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:07:37,590 [INFO] extract_aug:678 - [RUN] TCGA-KN-8437-01Z-00-DX1.573F2559-097F-4A87-9AB6-55BF2FEB724F -> he_e_suppress_L2
+2025-12-25 20:09:12,438 [INFO] extract_aug:692 - [OK] TCGA-KN-8437-01Z-00-DX1.573F2559-097F-4A87-9AB6-55BF2FEB724F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KN-8437-01Z-00-DX1.573F2559-097F-4A87-9AB6-55BF2FEB724F.h5
+2025-12-25 20:09:12,754 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:09:12,754 [INFO] extract_aug:647 - [63/118] Slide: TCGA-KO-8403-01Z-00-DX1.47C5A937-3397-4313-BE8B-0C6E4B12C301.svs
+2025-12-25 20:09:12,756 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8403-01Z-00-DX1.47C5A937-3397-4313-BE8B-0C6E4B12C301_patches.h5
+2025-12-25 20:09:12,790 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:09:12,796 [INFO] extract_aug:678 - [RUN] TCGA-KO-8403-01Z-00-DX1.47C5A937-3397-4313-BE8B-0C6E4B12C301 -> he_e_suppress_L2
+2025-12-25 20:11:46,077 [INFO] extract_aug:692 - [OK] TCGA-KO-8403-01Z-00-DX1.47C5A937-3397-4313-BE8B-0C6E4B12C301.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8403-01Z-00-DX1.47C5A937-3397-4313-BE8B-0C6E4B12C301.h5
+2025-12-25 20:11:46,372 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:11:46,372 [INFO] extract_aug:647 - [64/118] Slide: TCGA-KO-8404-01Z-00-DX1.0285FDDF-1C75-4DF3-BD59-285870B73B88.svs
+2025-12-25 20:11:46,373 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8404-01Z-00-DX1.0285FDDF-1C75-4DF3-BD59-285870B73B88_patches.h5
+2025-12-25 20:11:46,466 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:11:46,473 [INFO] extract_aug:678 - [RUN] TCGA-KO-8404-01Z-00-DX1.0285FDDF-1C75-4DF3-BD59-285870B73B88 -> he_e_suppress_L2
+2025-12-25 20:14:21,253 [INFO] extract_aug:692 - [OK] TCGA-KO-8404-01Z-00-DX1.0285FDDF-1C75-4DF3-BD59-285870B73B88.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8404-01Z-00-DX1.0285FDDF-1C75-4DF3-BD59-285870B73B88.h5
+2025-12-25 20:14:21,551 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:14:21,552 [INFO] extract_aug:647 - [65/118] Slide: TCGA-KO-8405-01Z-00-DX1.DB2F9FFE-B562-4D52-A4DF-E939DE99B5F7.svs
+2025-12-25 20:14:21,554 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8405-01Z-00-DX1.DB2F9FFE-B562-4D52-A4DF-E939DE99B5F7_patches.h5
+2025-12-25 20:14:21,653 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:14:21,662 [INFO] extract_aug:678 - [RUN] TCGA-KO-8405-01Z-00-DX1.DB2F9FFE-B562-4D52-A4DF-E939DE99B5F7 -> he_e_suppress_L2
+2025-12-25 20:17:35,292 [INFO] extract_aug:692 - [OK] TCGA-KO-8405-01Z-00-DX1.DB2F9FFE-B562-4D52-A4DF-E939DE99B5F7.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8405-01Z-00-DX1.DB2F9FFE-B562-4D52-A4DF-E939DE99B5F7.h5
+2025-12-25 20:17:35,662 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:17:35,663 [INFO] extract_aug:647 - [66/118] Slide: TCGA-KO-8406-01Z-00-DX1.F9FDAB2C-9EEC-41D0-A29C-530107B96AC2.svs
+2025-12-25 20:17:35,664 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8406-01Z-00-DX1.F9FDAB2C-9EEC-41D0-A29C-530107B96AC2_patches.h5
+2025-12-25 20:17:35,697 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:17:35,703 [INFO] extract_aug:678 - [RUN] TCGA-KO-8406-01Z-00-DX1.F9FDAB2C-9EEC-41D0-A29C-530107B96AC2 -> he_e_suppress_L2
+2025-12-25 20:19:55,449 [INFO] extract_aug:692 - [OK] TCGA-KO-8406-01Z-00-DX1.F9FDAB2C-9EEC-41D0-A29C-530107B96AC2.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8406-01Z-00-DX1.F9FDAB2C-9EEC-41D0-A29C-530107B96AC2.h5
+2025-12-25 20:19:55,627 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:19:55,627 [INFO] extract_aug:647 - [67/118] Slide: TCGA-KO-8407-01Z-00-DX1.4EB39EA8-2A33-48E1-88A6-EE3B544249AB.svs
+2025-12-25 20:19:55,628 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8407-01Z-00-DX1.4EB39EA8-2A33-48E1-88A6-EE3B544249AB_patches.h5
+2025-12-25 20:19:55,662 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:19:55,668 [INFO] extract_aug:678 - [RUN] TCGA-KO-8407-01Z-00-DX1.4EB39EA8-2A33-48E1-88A6-EE3B544249AB -> he_e_suppress_L2
+2025-12-25 20:22:03,285 [INFO] extract_aug:692 - [OK] TCGA-KO-8407-01Z-00-DX1.4EB39EA8-2A33-48E1-88A6-EE3B544249AB.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8407-01Z-00-DX1.4EB39EA8-2A33-48E1-88A6-EE3B544249AB.h5
+2025-12-25 20:22:03,506 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:22:03,507 [INFO] extract_aug:647 - [68/118] Slide: TCGA-KO-8409-01Z-00-DX1.C73F6879-81C2-4D2D-9673-4989AADB568D.svs
+2025-12-25 20:22:03,509 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8409-01Z-00-DX1.C73F6879-81C2-4D2D-9673-4989AADB568D_patches.h5
+2025-12-25 20:22:03,621 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:22:03,631 [INFO] extract_aug:678 - [RUN] TCGA-KO-8409-01Z-00-DX1.C73F6879-81C2-4D2D-9673-4989AADB568D -> he_e_suppress_L2
+2025-12-25 20:24:25,931 [INFO] extract_aug:692 - [OK] TCGA-KO-8409-01Z-00-DX1.C73F6879-81C2-4D2D-9673-4989AADB568D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8409-01Z-00-DX1.C73F6879-81C2-4D2D-9673-4989AADB568D.h5
+2025-12-25 20:24:26,128 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:24:26,129 [INFO] extract_aug:647 - [69/118] Slide: TCGA-KO-8410-01Z-00-DX1.95A5FA25-6C01-478E-8CAB-20DF56E8D01C.svs
+2025-12-25 20:24:26,130 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8410-01Z-00-DX1.95A5FA25-6C01-478E-8CAB-20DF56E8D01C_patches.h5
+2025-12-25 20:24:26,171 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:24:26,179 [INFO] extract_aug:678 - [RUN] TCGA-KO-8410-01Z-00-DX1.95A5FA25-6C01-478E-8CAB-20DF56E8D01C -> he_e_suppress_L2
+2025-12-25 20:27:20,931 [INFO] extract_aug:692 - [OK] TCGA-KO-8410-01Z-00-DX1.95A5FA25-6C01-478E-8CAB-20DF56E8D01C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8410-01Z-00-DX1.95A5FA25-6C01-478E-8CAB-20DF56E8D01C.h5
+2025-12-25 20:27:21,224 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:27:21,224 [INFO] extract_aug:647 - [70/118] Slide: TCGA-KO-8411-01Z-00-DX1.57A47A81-003C-4F34-B8FA-D1313114892F.svs
+2025-12-25 20:27:21,225 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8411-01Z-00-DX1.57A47A81-003C-4F34-B8FA-D1313114892F_patches.h5
+2025-12-25 20:27:21,324 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:27:21,332 [INFO] extract_aug:678 - [RUN] TCGA-KO-8411-01Z-00-DX1.57A47A81-003C-4F34-B8FA-D1313114892F -> he_e_suppress_L2
+2025-12-25 20:29:25,168 [INFO] extract_aug:692 - [OK] TCGA-KO-8411-01Z-00-DX1.57A47A81-003C-4F34-B8FA-D1313114892F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8411-01Z-00-DX1.57A47A81-003C-4F34-B8FA-D1313114892F.h5
+2025-12-25 20:29:25,373 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:29:25,373 [INFO] extract_aug:647 - [71/118] Slide: TCGA-KO-8413-01Z-00-DX1.592BC1BB-35B9-4CE1-ACD2-76DD4C4FE7A4.svs
+2025-12-25 20:29:25,374 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8413-01Z-00-DX1.592BC1BB-35B9-4CE1-ACD2-76DD4C4FE7A4_patches.h5
+2025-12-25 20:29:25,479 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:29:25,486 [INFO] extract_aug:678 - [RUN] TCGA-KO-8413-01Z-00-DX1.592BC1BB-35B9-4CE1-ACD2-76DD4C4FE7A4 -> he_e_suppress_L2
+2025-12-25 20:31:40,953 [INFO] extract_aug:692 - [OK] TCGA-KO-8413-01Z-00-DX1.592BC1BB-35B9-4CE1-ACD2-76DD4C4FE7A4.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8413-01Z-00-DX1.592BC1BB-35B9-4CE1-ACD2-76DD4C4FE7A4.h5
+2025-12-25 20:31:41,234 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:31:41,234 [INFO] extract_aug:647 - [72/118] Slide: TCGA-KO-8414-01Z-00-DX1.F827AA8C-3A50-4697-9788-98A3D87BCE52.svs
+2025-12-25 20:31:41,235 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8414-01Z-00-DX1.F827AA8C-3A50-4697-9788-98A3D87BCE52_patches.h5
+2025-12-25 20:31:41,268 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:31:41,275 [INFO] extract_aug:678 - [RUN] TCGA-KO-8414-01Z-00-DX1.F827AA8C-3A50-4697-9788-98A3D87BCE52 -> he_e_suppress_L2
+2025-12-25 20:34:13,604 [INFO] extract_aug:692 - [OK] TCGA-KO-8414-01Z-00-DX1.F827AA8C-3A50-4697-9788-98A3D87BCE52.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8414-01Z-00-DX1.F827AA8C-3A50-4697-9788-98A3D87BCE52.h5
+2025-12-25 20:34:13,849 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:34:13,850 [INFO] extract_aug:647 - [73/118] Slide: TCGA-KO-8415-01Z-00-DX1.CB5F5330-C4E6-4ABB-B9A5-92F94EF23837.svs
+2025-12-25 20:34:13,851 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8415-01Z-00-DX1.CB5F5330-C4E6-4ABB-B9A5-92F94EF23837_patches.h5
+2025-12-25 20:34:13,889 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:34:13,897 [INFO] extract_aug:678 - [RUN] TCGA-KO-8415-01Z-00-DX1.CB5F5330-C4E6-4ABB-B9A5-92F94EF23837 -> he_e_suppress_L2
+2025-12-25 20:36:29,700 [INFO] extract_aug:692 - [OK] TCGA-KO-8415-01Z-00-DX1.CB5F5330-C4E6-4ABB-B9A5-92F94EF23837.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8415-01Z-00-DX1.CB5F5330-C4E6-4ABB-B9A5-92F94EF23837.h5
+2025-12-25 20:36:29,997 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:36:29,998 [INFO] extract_aug:647 - [74/118] Slide: TCGA-KO-8416-01Z-00-DX1.AA58FA3E-02A6-4696-A4F6-2B11C5B0C0E8.svs
+2025-12-25 20:36:29,999 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8416-01Z-00-DX1.AA58FA3E-02A6-4696-A4F6-2B11C5B0C0E8_patches.h5
+2025-12-25 20:36:30,053 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:36:30,068 [INFO] extract_aug:678 - [RUN] TCGA-KO-8416-01Z-00-DX1.AA58FA3E-02A6-4696-A4F6-2B11C5B0C0E8 -> he_e_suppress_L2
+2025-12-25 20:39:22,719 [INFO] extract_aug:692 - [OK] TCGA-KO-8416-01Z-00-DX1.AA58FA3E-02A6-4696-A4F6-2B11C5B0C0E8.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8416-01Z-00-DX1.AA58FA3E-02A6-4696-A4F6-2B11C5B0C0E8.h5
+2025-12-25 20:39:23,008 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:39:23,008 [INFO] extract_aug:647 - [75/118] Slide: TCGA-KO-8417-01Z-00-DX1.E145D87F-24DC-4336-98BD-2D142079D73D.svs
+2025-12-25 20:39:23,009 [INFO] extract_aug:656 - Coords matched: TCGA-KO-8417-01Z-00-DX1.E145D87F-24DC-4336-98BD-2D142079D73D_patches.h5
+2025-12-25 20:39:23,049 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:39:23,057 [INFO] extract_aug:678 - [RUN] TCGA-KO-8417-01Z-00-DX1.E145D87F-24DC-4336-98BD-2D142079D73D -> he_e_suppress_L2
+2025-12-25 20:43:05,533 [INFO] extract_aug:692 - [OK] TCGA-KO-8417-01Z-00-DX1.E145D87F-24DC-4336-98BD-2D142079D73D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-KO-8417-01Z-00-DX1.E145D87F-24DC-4336-98BD-2D142079D73D.h5
+2025-12-25 20:43:05,713 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:43:05,713 [INFO] extract_aug:647 - [76/118] Slide: TCGA-NP-A5B3-01Z-00-DX1.6DE4C2C4-E135-4117-864D-2A477D6FDB86.svs
+2025-12-25 20:43:05,715 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5B3-01Z-00-DX1.6DE4C2C4-E135-4117-864D-2A477D6FDB86_patches.h5
+2025-12-25 20:43:05,759 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:43:05,766 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5B3-01Z-00-DX1.6DE4C2C4-E135-4117-864D-2A477D6FDB86 -> he_e_suppress_L2
+2025-12-25 20:43:35,737 [INFO] extract_aug:692 - [OK] TCGA-NP-A5B3-01Z-00-DX1.6DE4C2C4-E135-4117-864D-2A477D6FDB86.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5B3-01Z-00-DX1.6DE4C2C4-E135-4117-864D-2A477D6FDB86.h5
+2025-12-25 20:43:36,038 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:43:36,038 [INFO] extract_aug:647 - [77/118] Slide: TCGA-NP-A5GY-01Z-00-DX1.F405475A-B246-42FB-8380-8953B328193E.svs
+2025-12-25 20:43:36,040 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5GY-01Z-00-DX1.F405475A-B246-42FB-8380-8953B328193E_patches.h5
+2025-12-25 20:43:36,124 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:43:36,131 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5GY-01Z-00-DX1.F405475A-B246-42FB-8380-8953B328193E -> he_e_suppress_L2
+2025-12-25 20:44:26,418 [INFO] extract_aug:692 - [OK] TCGA-NP-A5GY-01Z-00-DX1.F405475A-B246-42FB-8380-8953B328193E.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5GY-01Z-00-DX1.F405475A-B246-42FB-8380-8953B328193E.h5
+2025-12-25 20:44:26,773 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:44:26,773 [INFO] extract_aug:647 - [78/118] Slide: TCGA-NP-A5GZ-01Z-00-DX1.07B19B85-A1CE-4AF2-B3E2-C86D11FAC907.svs
+2025-12-25 20:44:26,774 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5GZ-01Z-00-DX1.07B19B85-A1CE-4AF2-B3E2-C86D11FAC907_patches.h5
+2025-12-25 20:44:26,826 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:44:26,834 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5GZ-01Z-00-DX1.07B19B85-A1CE-4AF2-B3E2-C86D11FAC907 -> he_e_suppress_L2
+2025-12-25 20:45:05,538 [INFO] extract_aug:692 - [OK] TCGA-NP-A5GZ-01Z-00-DX1.07B19B85-A1CE-4AF2-B3E2-C86D11FAC907.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5GZ-01Z-00-DX1.07B19B85-A1CE-4AF2-B3E2-C86D11FAC907.h5
+2025-12-25 20:45:05,876 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:45:05,876 [INFO] extract_aug:647 - [79/118] Slide: TCGA-NP-A5H1-01Z-00-DX1.ABF28359-B224-4C36-9217-C6DB90692848.svs
+2025-12-25 20:45:05,877 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5H1-01Z-00-DX1.ABF28359-B224-4C36-9217-C6DB90692848_patches.h5
+2025-12-25 20:45:05,939 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:45:05,946 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5H1-01Z-00-DX1.ABF28359-B224-4C36-9217-C6DB90692848 -> he_e_suppress_L2
+2025-12-25 20:45:53,499 [INFO] extract_aug:692 - [OK] TCGA-NP-A5H1-01Z-00-DX1.ABF28359-B224-4C36-9217-C6DB90692848.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5H1-01Z-00-DX1.ABF28359-B224-4C36-9217-C6DB90692848.h5
+2025-12-25 20:45:53,806 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:45:53,806 [INFO] extract_aug:647 - [80/118] Slide: TCGA-NP-A5H5-01Z-00-DX1.E6434A29-9182-4476-9E89-62B9C8EABC5B.svs
+2025-12-25 20:45:53,807 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5H5-01Z-00-DX1.E6434A29-9182-4476-9E89-62B9C8EABC5B_patches.h5
+2025-12-25 20:45:53,856 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:45:53,865 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5H5-01Z-00-DX1.E6434A29-9182-4476-9E89-62B9C8EABC5B -> he_e_suppress_L2
+2025-12-25 20:46:42,439 [INFO] extract_aug:692 - [OK] TCGA-NP-A5H5-01Z-00-DX1.E6434A29-9182-4476-9E89-62B9C8EABC5B.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5H5-01Z-00-DX1.E6434A29-9182-4476-9E89-62B9C8EABC5B.h5
+2025-12-25 20:46:42,719 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:46:42,719 [INFO] extract_aug:647 - [81/118] Slide: TCGA-NP-A5H6-01Z-00-DX1.49B2A361-7BCD-4321-8372-8BAB636E812F.svs
+2025-12-25 20:46:42,720 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5H6-01Z-00-DX1.49B2A361-7BCD-4321-8372-8BAB636E812F_patches.h5
+2025-12-25 20:46:42,906 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:46:42,915 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5H6-01Z-00-DX1.49B2A361-7BCD-4321-8372-8BAB636E812F -> he_e_suppress_L2
+2025-12-25 20:47:32,758 [INFO] extract_aug:692 - [OK] TCGA-NP-A5H6-01Z-00-DX1.49B2A361-7BCD-4321-8372-8BAB636E812F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5H6-01Z-00-DX1.49B2A361-7BCD-4321-8372-8BAB636E812F.h5
+2025-12-25 20:47:33,112 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:47:33,112 [INFO] extract_aug:647 - [82/118] Slide: TCGA-NP-A5H7-01Z-00-DX1.3AEF89FD-4E13-433C-85D8-C8F9F9EA9EF3.svs
+2025-12-25 20:47:33,113 [INFO] extract_aug:656 - Coords matched: TCGA-NP-A5H7-01Z-00-DX1.3AEF89FD-4E13-433C-85D8-C8F9F9EA9EF3_patches.h5
+2025-12-25 20:47:33,157 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:47:33,163 [INFO] extract_aug:678 - [RUN] TCGA-NP-A5H7-01Z-00-DX1.3AEF89FD-4E13-433C-85D8-C8F9F9EA9EF3 -> he_e_suppress_L2
+2025-12-25 20:48:21,031 [INFO] extract_aug:692 - [OK] TCGA-NP-A5H7-01Z-00-DX1.3AEF89FD-4E13-433C-85D8-C8F9F9EA9EF3.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-NP-A5H7-01Z-00-DX1.3AEF89FD-4E13-433C-85D8-C8F9F9EA9EF3.h5
+2025-12-25 20:48:21,273 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:48:21,273 [INFO] extract_aug:647 - [83/118] Slide: TCGA-UW-A72I-01Z-00-DX1.EAA44029-3390-4AEF-8B86-E4A1F64E486C.svs
+2025-12-25 20:48:21,274 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72I-01Z-00-DX1.EAA44029-3390-4AEF-8B86-E4A1F64E486C_patches.h5
+2025-12-25 20:48:21,353 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:48:21,359 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72I-01Z-00-DX1.EAA44029-3390-4AEF-8B86-E4A1F64E486C -> he_e_suppress_L2
+2025-12-25 20:49:55,362 [INFO] extract_aug:692 - [OK] TCGA-UW-A72I-01Z-00-DX1.EAA44029-3390-4AEF-8B86-E4A1F64E486C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72I-01Z-00-DX1.EAA44029-3390-4AEF-8B86-E4A1F64E486C.h5
+2025-12-25 20:49:55,648 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:49:55,648 [INFO] extract_aug:647 - [84/118] Slide: TCGA-UW-A72J-01Z-00-DX1.B62772BA-DC29-40C9-B5C8-AC47AFA0437D.svs
+2025-12-25 20:49:55,649 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72J-01Z-00-DX1.B62772BA-DC29-40C9-B5C8-AC47AFA0437D_patches.h5
+2025-12-25 20:49:55,719 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:49:55,727 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72J-01Z-00-DX1.B62772BA-DC29-40C9-B5C8-AC47AFA0437D -> he_e_suppress_L2
+2025-12-25 20:52:45,449 [INFO] extract_aug:692 - [OK] TCGA-UW-A72J-01Z-00-DX1.B62772BA-DC29-40C9-B5C8-AC47AFA0437D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72J-01Z-00-DX1.B62772BA-DC29-40C9-B5C8-AC47AFA0437D.h5
+2025-12-25 20:52:45,716 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:52:45,716 [INFO] extract_aug:647 - [85/118] Slide: TCGA-UW-A72K-01Z-00-DX1.F1E38D60-26AA-4D0E-8738-7711611D10D6.svs
+2025-12-25 20:52:45,717 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72K-01Z-00-DX1.F1E38D60-26AA-4D0E-8738-7711611D10D6_patches.h5
+2025-12-25 20:52:45,758 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:52:45,765 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72K-01Z-00-DX1.F1E38D60-26AA-4D0E-8738-7711611D10D6 -> he_e_suppress_L2
+2025-12-25 20:54:51,612 [INFO] extract_aug:692 - [OK] TCGA-UW-A72K-01Z-00-DX1.F1E38D60-26AA-4D0E-8738-7711611D10D6.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72K-01Z-00-DX1.F1E38D60-26AA-4D0E-8738-7711611D10D6.h5
+2025-12-25 20:54:51,839 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:54:51,840 [INFO] extract_aug:647 - [86/118] Slide: TCGA-UW-A72L-01Z-00-DX1.0A459BE8-D799-441D-85C0-B02AF6EDC806.svs
+2025-12-25 20:54:51,841 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72L-01Z-00-DX1.0A459BE8-D799-441D-85C0-B02AF6EDC806_patches.h5
+2025-12-25 20:54:51,924 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:54:51,932 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72L-01Z-00-DX1.0A459BE8-D799-441D-85C0-B02AF6EDC806 -> he_e_suppress_L2
+2025-12-25 20:56:37,318 [INFO] extract_aug:692 - [OK] TCGA-UW-A72L-01Z-00-DX1.0A459BE8-D799-441D-85C0-B02AF6EDC806.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72L-01Z-00-DX1.0A459BE8-D799-441D-85C0-B02AF6EDC806.h5
+2025-12-25 20:56:37,689 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 20:56:37,689 [INFO] extract_aug:647 - [87/118] Slide: TCGA-UW-A72M-01Z-00-DX1.D2F473F4-24A1-4F02-B02E-C5A0390F0C8F.svs
+2025-12-25 20:56:37,690 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72M-01Z-00-DX1.D2F473F4-24A1-4F02-B02E-C5A0390F0C8F_patches.h5
+2025-12-25 20:56:37,765 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 20:56:37,773 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72M-01Z-00-DX1.D2F473F4-24A1-4F02-B02E-C5A0390F0C8F -> he_e_suppress_L2
+2025-12-25 21:00:33,644 [INFO] extract_aug:692 - [OK] TCGA-UW-A72M-01Z-00-DX1.D2F473F4-24A1-4F02-B02E-C5A0390F0C8F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72M-01Z-00-DX1.D2F473F4-24A1-4F02-B02E-C5A0390F0C8F.h5
+2025-12-25 21:00:33,836 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:00:33,836 [INFO] extract_aug:647 - [88/118] Slide: TCGA-UW-A72N-01Z-00-DX1.458F977B-AA32-4073-BDC6-FCAD44C6B83D.svs
+2025-12-25 21:00:33,837 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72N-01Z-00-DX1.458F977B-AA32-4073-BDC6-FCAD44C6B83D_patches.h5
+2025-12-25 21:00:33,903 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:00:33,911 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72N-01Z-00-DX1.458F977B-AA32-4073-BDC6-FCAD44C6B83D -> he_e_suppress_L2
+2025-12-25 21:02:37,558 [INFO] extract_aug:692 - [OK] TCGA-UW-A72N-01Z-00-DX1.458F977B-AA32-4073-BDC6-FCAD44C6B83D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72N-01Z-00-DX1.458F977B-AA32-4073-BDC6-FCAD44C6B83D.h5
+2025-12-25 21:02:37,747 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:02:37,747 [INFO] extract_aug:647 - [89/118] Slide: TCGA-UW-A72O-01Z-00-DX1.755C4693-A9CE-48E7-A76B-DAECEE850D35.svs
+2025-12-25 21:02:37,748 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72O-01Z-00-DX1.755C4693-A9CE-48E7-A76B-DAECEE850D35_patches.h5
+2025-12-25 21:02:37,835 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:02:37,846 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72O-01Z-00-DX1.755C4693-A9CE-48E7-A76B-DAECEE850D35 -> he_e_suppress_L2
+2025-12-25 21:04:27,412 [INFO] extract_aug:692 - [OK] TCGA-UW-A72O-01Z-00-DX1.755C4693-A9CE-48E7-A76B-DAECEE850D35.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72O-01Z-00-DX1.755C4693-A9CE-48E7-A76B-DAECEE850D35.h5
+2025-12-25 21:04:27,675 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:04:27,675 [INFO] extract_aug:647 - [90/118] Slide: TCGA-UW-A72P-01Z-00-DX1.B16A8F4B-6E8E-4642-AEEF-EBD0613C372D.svs
+2025-12-25 21:04:27,676 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72P-01Z-00-DX1.B16A8F4B-6E8E-4642-AEEF-EBD0613C372D_patches.h5
+2025-12-25 21:04:27,740 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:04:27,747 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72P-01Z-00-DX1.B16A8F4B-6E8E-4642-AEEF-EBD0613C372D -> he_e_suppress_L2
+2025-12-25 21:08:34,908 [INFO] extract_aug:692 - [OK] TCGA-UW-A72P-01Z-00-DX1.B16A8F4B-6E8E-4642-AEEF-EBD0613C372D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72P-01Z-00-DX1.B16A8F4B-6E8E-4642-AEEF-EBD0613C372D.h5
+2025-12-25 21:08:35,189 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:08:35,189 [INFO] extract_aug:647 - [91/118] Slide: TCGA-UW-A72Q-01Z-00-DX1.6EEF0E01-E576-4DCA-B613-451D0079EB13.svs
+2025-12-25 21:08:35,191 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72Q-01Z-00-DX1.6EEF0E01-E576-4DCA-B613-451D0079EB13_patches.h5
+2025-12-25 21:08:35,265 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:08:35,272 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72Q-01Z-00-DX1.6EEF0E01-E576-4DCA-B613-451D0079EB13 -> he_e_suppress_L2
+2025-12-25 21:09:29,056 [INFO] extract_aug:692 - [OK] TCGA-UW-A72Q-01Z-00-DX1.6EEF0E01-E576-4DCA-B613-451D0079EB13.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72Q-01Z-00-DX1.6EEF0E01-E576-4DCA-B613-451D0079EB13.h5
+2025-12-25 21:09:29,414 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:09:29,415 [INFO] extract_aug:647 - [92/118] Slide: TCGA-UW-A72R-01Z-00-DX1.0D9559B0-80C4-42BA-9461-F92792F0FC0F.svs
+2025-12-25 21:09:29,415 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72R-01Z-00-DX1.0D9559B0-80C4-42BA-9461-F92792F0FC0F_patches.h5
+2025-12-25 21:09:29,501 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:09:29,508 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72R-01Z-00-DX1.0D9559B0-80C4-42BA-9461-F92792F0FC0F -> he_e_suppress_L2
+2025-12-25 21:14:26,858 [INFO] extract_aug:692 - [OK] TCGA-UW-A72R-01Z-00-DX1.0D9559B0-80C4-42BA-9461-F92792F0FC0F.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72R-01Z-00-DX1.0D9559B0-80C4-42BA-9461-F92792F0FC0F.h5
+2025-12-25 21:14:27,161 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:14:27,162 [INFO] extract_aug:647 - [93/118] Slide: TCGA-UW-A72S-01Z-00-DX1.EA180EA6-ADD1-4ECC-89D8-082B185AC2B4.svs
+2025-12-25 21:14:27,163 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72S-01Z-00-DX1.EA180EA6-ADD1-4ECC-89D8-082B185AC2B4_patches.h5
+2025-12-25 21:14:27,245 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:14:27,253 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72S-01Z-00-DX1.EA180EA6-ADD1-4ECC-89D8-082B185AC2B4 -> he_e_suppress_L2
+2025-12-25 21:18:38,616 [INFO] extract_aug:692 - [OK] TCGA-UW-A72S-01Z-00-DX1.EA180EA6-ADD1-4ECC-89D8-082B185AC2B4.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72S-01Z-00-DX1.EA180EA6-ADD1-4ECC-89D8-082B185AC2B4.h5
+2025-12-25 21:18:38,987 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:18:38,987 [INFO] extract_aug:647 - [94/118] Slide: TCGA-UW-A72T-01Z-00-DX1.1F6EC843-0D4C-4231-99D2-82174C9FF94D.svs
+2025-12-25 21:18:38,988 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A72T-01Z-00-DX1.1F6EC843-0D4C-4231-99D2-82174C9FF94D_patches.h5
+2025-12-25 21:18:39,045 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:18:39,052 [INFO] extract_aug:678 - [RUN] TCGA-UW-A72T-01Z-00-DX1.1F6EC843-0D4C-4231-99D2-82174C9FF94D -> he_e_suppress_L2
+2025-12-25 21:20:23,474 [INFO] extract_aug:692 - [OK] TCGA-UW-A72T-01Z-00-DX1.1F6EC843-0D4C-4231-99D2-82174C9FF94D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A72T-01Z-00-DX1.1F6EC843-0D4C-4231-99D2-82174C9FF94D.h5
+2025-12-25 21:20:23,831 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:20:23,832 [INFO] extract_aug:647 - [95/118] Slide: TCGA-UW-A7GC-01Z-00-DX1.D2D6FCC6-719A-4C03-A496-E23D18655538.svs
+2025-12-25 21:20:23,833 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GC-01Z-00-DX1.D2D6FCC6-719A-4C03-A496-E23D18655538_patches.h5
+2025-12-25 21:20:23,881 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:20:23,888 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GC-01Z-00-DX1.D2D6FCC6-719A-4C03-A496-E23D18655538 -> he_e_suppress_L2
+2025-12-25 21:21:38,579 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GC-01Z-00-DX1.D2D6FCC6-719A-4C03-A496-E23D18655538.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GC-01Z-00-DX1.D2D6FCC6-719A-4C03-A496-E23D18655538.h5
+2025-12-25 21:21:38,817 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:21:38,817 [INFO] extract_aug:647 - [96/118] Slide: TCGA-UW-A7GC-11Z-00-DX1.ADAF7B0F-8EDC-4022-A873-3A5EBA4A46C3.svs
+2025-12-25 21:21:38,818 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GC-11Z-00-DX1.ADAF7B0F-8EDC-4022-A873-3A5EBA4A46C3_patches.h5
+2025-12-25 21:21:38,862 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:21:38,869 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GC-11Z-00-DX1.ADAF7B0F-8EDC-4022-A873-3A5EBA4A46C3 -> he_e_suppress_L2
+2025-12-25 21:22:21,726 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GC-11Z-00-DX1.ADAF7B0F-8EDC-4022-A873-3A5EBA4A46C3.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GC-11Z-00-DX1.ADAF7B0F-8EDC-4022-A873-3A5EBA4A46C3.h5
+2025-12-25 21:22:22,083 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:22:22,084 [INFO] extract_aug:647 - [97/118] Slide: TCGA-UW-A7GG-01Z-00-DX1.83625891-206C-4060-924A-166BE9E893A7.svs
+2025-12-25 21:22:22,085 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GG-01Z-00-DX1.83625891-206C-4060-924A-166BE9E893A7_patches.h5
+2025-12-25 21:22:22,150 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:22:22,157 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GG-01Z-00-DX1.83625891-206C-4060-924A-166BE9E893A7 -> he_e_suppress_L2
+2025-12-25 21:26:09,210 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GG-01Z-00-DX1.83625891-206C-4060-924A-166BE9E893A7.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GG-01Z-00-DX1.83625891-206C-4060-924A-166BE9E893A7.h5
+2025-12-25 21:26:09,484 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:26:09,485 [INFO] extract_aug:647 - [98/118] Slide: TCGA-UW-A7GG-11Z-00-DX1.35E063D3-7E85-4BEB-9807-26F96CE31364.svs
+2025-12-25 21:26:09,486 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GG-11Z-00-DX1.35E063D3-7E85-4BEB-9807-26F96CE31364_patches.h5
+2025-12-25 21:26:09,520 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:26:09,527 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GG-11Z-00-DX1.35E063D3-7E85-4BEB-9807-26F96CE31364 -> he_e_suppress_L2
+2025-12-25 21:28:28,191 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GG-11Z-00-DX1.35E063D3-7E85-4BEB-9807-26F96CE31364.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GG-11Z-00-DX1.35E063D3-7E85-4BEB-9807-26F96CE31364.h5
+2025-12-25 21:28:28,537 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:28:28,538 [INFO] extract_aug:647 - [99/118] Slide: TCGA-UW-A7GI-01Z-00-DX1.4A1709FC-F8F3-4509-A011-10CBF1B53DA9.svs
+2025-12-25 21:28:28,540 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GI-01Z-00-DX1.4A1709FC-F8F3-4509-A011-10CBF1B53DA9_patches.h5
+2025-12-25 21:28:28,580 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:28:28,587 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GI-01Z-00-DX1.4A1709FC-F8F3-4509-A011-10CBF1B53DA9 -> he_e_suppress_L2
+2025-12-25 21:31:27,702 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GI-01Z-00-DX1.4A1709FC-F8F3-4509-A011-10CBF1B53DA9.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GI-01Z-00-DX1.4A1709FC-F8F3-4509-A011-10CBF1B53DA9.h5
+2025-12-25 21:31:28,074 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:31:28,075 [INFO] extract_aug:647 - [100/118] Slide: TCGA-UW-A7GI-11Z-00-DX1.3D506541-C999-4897-B21B-2211ADB364AE.svs
+2025-12-25 21:31:28,076 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GI-11Z-00-DX1.3D506541-C999-4897-B21B-2211ADB364AE_patches.h5
+2025-12-25 21:31:28,173 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:31:28,180 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GI-11Z-00-DX1.3D506541-C999-4897-B21B-2211ADB364AE -> he_e_suppress_L2
+2025-12-25 21:33:35,519 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GI-11Z-00-DX1.3D506541-C999-4897-B21B-2211ADB364AE.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GI-11Z-00-DX1.3D506541-C999-4897-B21B-2211ADB364AE.h5
+2025-12-25 21:33:35,774 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:33:35,774 [INFO] extract_aug:647 - [101/118] Slide: TCGA-UW-A7GJ-01Z-00-DX1.5CA0FD93-E237-4AEC-84D6-0199A62105DE.svs
+2025-12-25 21:33:35,775 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GJ-01Z-00-DX1.5CA0FD93-E237-4AEC-84D6-0199A62105DE_patches.h5
+2025-12-25 21:33:35,811 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:33:35,817 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GJ-01Z-00-DX1.5CA0FD93-E237-4AEC-84D6-0199A62105DE -> he_e_suppress_L2
+2025-12-25 21:36:43,371 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GJ-01Z-00-DX1.5CA0FD93-E237-4AEC-84D6-0199A62105DE.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GJ-01Z-00-DX1.5CA0FD93-E237-4AEC-84D6-0199A62105DE.h5
+2025-12-25 21:36:43,742 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:36:43,743 [INFO] extract_aug:647 - [102/118] Slide: TCGA-UW-A7GJ-11Z-00-DX1.97F9F149-FA58-4535-AE9B-237B8F87DEC7.svs
+2025-12-25 21:36:43,744 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GJ-11Z-00-DX1.97F9F149-FA58-4535-AE9B-237B8F87DEC7_patches.h5
+2025-12-25 21:36:43,784 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:36:43,793 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GJ-11Z-00-DX1.97F9F149-FA58-4535-AE9B-237B8F87DEC7 -> he_e_suppress_L2
+2025-12-25 21:38:59,843 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GJ-11Z-00-DX1.97F9F149-FA58-4535-AE9B-237B8F87DEC7.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GJ-11Z-00-DX1.97F9F149-FA58-4535-AE9B-237B8F87DEC7.h5
+2025-12-25 21:39:00,162 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:39:00,162 [INFO] extract_aug:647 - [103/118] Slide: TCGA-UW-A7GK-01Z-00-DX1.B074DEBE-1697-443B-B426-BD57553E1108.svs
+2025-12-25 21:39:00,164 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GK-01Z-00-DX1.B074DEBE-1697-443B-B426-BD57553E1108_patches.h5
+2025-12-25 21:39:00,215 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:39:00,222 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GK-01Z-00-DX1.B074DEBE-1697-443B-B426-BD57553E1108 -> he_e_suppress_L2
+2025-12-25 21:42:00,063 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GK-01Z-00-DX1.B074DEBE-1697-443B-B426-BD57553E1108.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GK-01Z-00-DX1.B074DEBE-1697-443B-B426-BD57553E1108.h5
+2025-12-25 21:42:00,259 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:42:00,260 [INFO] extract_aug:647 - [104/118] Slide: TCGA-UW-A7GK-11Z-00-DX1.123382DA-3237-4467-ADDD-21A1617DF4E8.svs
+2025-12-25 21:42:00,261 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GK-11Z-00-DX1.123382DA-3237-4467-ADDD-21A1617DF4E8_patches.h5
+2025-12-25 21:42:00,295 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:42:00,302 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GK-11Z-00-DX1.123382DA-3237-4467-ADDD-21A1617DF4E8 -> he_e_suppress_L2
+2025-12-25 21:44:17,684 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GK-11Z-00-DX1.123382DA-3237-4467-ADDD-21A1617DF4E8.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GK-11Z-00-DX1.123382DA-3237-4467-ADDD-21A1617DF4E8.h5
+2025-12-25 21:44:18,042 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:44:18,042 [INFO] extract_aug:647 - [105/118] Slide: TCGA-UW-A7GL-01Z-00-DX1.BE2C0D9F-3F84-4363-9B79-01883E8F0306.svs
+2025-12-25 21:44:18,044 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GL-01Z-00-DX1.BE2C0D9F-3F84-4363-9B79-01883E8F0306_patches.h5
+2025-12-25 21:44:18,078 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:44:18,085 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GL-01Z-00-DX1.BE2C0D9F-3F84-4363-9B79-01883E8F0306 -> he_e_suppress_L2
+2025-12-25 21:48:13,627 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GL-01Z-00-DX1.BE2C0D9F-3F84-4363-9B79-01883E8F0306.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GL-01Z-00-DX1.BE2C0D9F-3F84-4363-9B79-01883E8F0306.h5
+2025-12-25 21:48:13,812 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:48:13,812 [INFO] extract_aug:647 - [106/118] Slide: TCGA-UW-A7GL-11Z-00-DX1.3508B4AD-C189-4416-848A-CA6771F2EE46.svs
+2025-12-25 21:48:13,814 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GL-11Z-00-DX1.3508B4AD-C189-4416-848A-CA6771F2EE46_patches.h5
+2025-12-25 21:48:13,890 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:48:13,907 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GL-11Z-00-DX1.3508B4AD-C189-4416-848A-CA6771F2EE46 -> he_e_suppress_L2
+2025-12-25 21:52:05,677 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GL-11Z-00-DX1.3508B4AD-C189-4416-848A-CA6771F2EE46.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GL-11Z-00-DX1.3508B4AD-C189-4416-848A-CA6771F2EE46.h5
+2025-12-25 21:52:06,012 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:52:06,013 [INFO] extract_aug:647 - [107/118] Slide: TCGA-UW-A7GN-01Z-00-DX1.0DCDED5B-B0D4-4B0F-81DB-1534E331ED3C.svs
+2025-12-25 21:52:06,014 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GN-01Z-00-DX1.0DCDED5B-B0D4-4B0F-81DB-1534E331ED3C_patches.h5
+2025-12-25 21:52:06,045 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:52:06,054 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GN-01Z-00-DX1.0DCDED5B-B0D4-4B0F-81DB-1534E331ED3C -> he_e_suppress_L2
+2025-12-25 21:54:56,395 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GN-01Z-00-DX1.0DCDED5B-B0D4-4B0F-81DB-1534E331ED3C.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GN-01Z-00-DX1.0DCDED5B-B0D4-4B0F-81DB-1534E331ED3C.h5
+2025-12-25 21:54:56,668 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:54:56,668 [INFO] extract_aug:647 - [108/118] Slide: TCGA-UW-A7GN-11Z-00-DX1.ABAA5DC6-D63C-4BBF-AB0C-213B95C79720.svs
+2025-12-25 21:54:56,669 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GN-11Z-00-DX1.ABAA5DC6-D63C-4BBF-AB0C-213B95C79720_patches.h5
+2025-12-25 21:54:56,779 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:54:56,786 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GN-11Z-00-DX1.ABAA5DC6-D63C-4BBF-AB0C-213B95C79720 -> he_e_suppress_L2
+2025-12-25 21:57:14,178 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GN-11Z-00-DX1.ABAA5DC6-D63C-4BBF-AB0C-213B95C79720.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GN-11Z-00-DX1.ABAA5DC6-D63C-4BBF-AB0C-213B95C79720.h5
+2025-12-25 21:57:14,494 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 21:57:14,495 [INFO] extract_aug:647 - [109/118] Slide: TCGA-UW-A7GP-01Z-00-DX1.C997CBA5-AF20-4CB3-9CB3-82AA65146EF5.svs
+2025-12-25 21:57:14,496 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GP-01Z-00-DX1.C997CBA5-AF20-4CB3-9CB3-82AA65146EF5_patches.h5
+2025-12-25 21:57:14,540 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 21:57:14,547 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GP-01Z-00-DX1.C997CBA5-AF20-4CB3-9CB3-82AA65146EF5 -> he_e_suppress_L2
+2025-12-25 22:00:29,941 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GP-01Z-00-DX1.C997CBA5-AF20-4CB3-9CB3-82AA65146EF5.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GP-01Z-00-DX1.C997CBA5-AF20-4CB3-9CB3-82AA65146EF5.h5
+2025-12-25 22:00:30,128 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:00:30,128 [INFO] extract_aug:647 - [110/118] Slide: TCGA-UW-A7GP-11Z-00-DX1.C89DD837-4B77-4CB5-8FAB-DF9315892B9B.svs
+2025-12-25 22:00:30,129 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GP-11Z-00-DX1.C89DD837-4B77-4CB5-8FAB-DF9315892B9B_patches.h5
+2025-12-25 22:00:30,166 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:00:30,172 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GP-11Z-00-DX1.C89DD837-4B77-4CB5-8FAB-DF9315892B9B -> he_e_suppress_L2
+2025-12-25 22:03:34,253 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GP-11Z-00-DX1.C89DD837-4B77-4CB5-8FAB-DF9315892B9B.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GP-11Z-00-DX1.C89DD837-4B77-4CB5-8FAB-DF9315892B9B.h5
+2025-12-25 22:03:34,474 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:03:34,474 [INFO] extract_aug:647 - [111/118] Slide: TCGA-UW-A7GR-01Z-00-DX1.094D510F-5348-4543-9F18-73815250F824.svs
+2025-12-25 22:03:34,475 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GR-01Z-00-DX1.094D510F-5348-4543-9F18-73815250F824_patches.h5
+2025-12-25 22:03:34,513 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:03:34,525 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GR-01Z-00-DX1.094D510F-5348-4543-9F18-73815250F824 -> he_e_suppress_L2
+2025-12-25 22:06:31,489 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GR-01Z-00-DX1.094D510F-5348-4543-9F18-73815250F824.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GR-01Z-00-DX1.094D510F-5348-4543-9F18-73815250F824.h5
+2025-12-25 22:06:31,848 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:06:31,848 [INFO] extract_aug:647 - [112/118] Slide: TCGA-UW-A7GR-11Z-00-DX1.33EC231A-1C19-48A5-B37E-14C79191DDD6.svs
+2025-12-25 22:06:31,850 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GR-11Z-00-DX1.33EC231A-1C19-48A5-B37E-14C79191DDD6_patches.h5
+2025-12-25 22:06:31,897 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:06:31,903 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GR-11Z-00-DX1.33EC231A-1C19-48A5-B37E-14C79191DDD6 -> he_e_suppress_L2
+2025-12-25 22:10:36,196 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GR-11Z-00-DX1.33EC231A-1C19-48A5-B37E-14C79191DDD6.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GR-11Z-00-DX1.33EC231A-1C19-48A5-B37E-14C79191DDD6.h5
+2025-12-25 22:10:36,567 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:10:36,567 [INFO] extract_aug:647 - [113/118] Slide: TCGA-UW-A7GU-01Z-00-DX1.30C1C11C-4113-4F8D-8372-5EE3DD33564D.svs
+2025-12-25 22:10:36,569 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GU-01Z-00-DX1.30C1C11C-4113-4F8D-8372-5EE3DD33564D_patches.h5
+2025-12-25 22:10:36,649 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:10:36,655 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GU-01Z-00-DX1.30C1C11C-4113-4F8D-8372-5EE3DD33564D -> he_e_suppress_L2
+2025-12-25 22:12:16,070 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GU-01Z-00-DX1.30C1C11C-4113-4F8D-8372-5EE3DD33564D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GU-01Z-00-DX1.30C1C11C-4113-4F8D-8372-5EE3DD33564D.h5
+2025-12-25 22:12:16,376 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:12:16,376 [INFO] extract_aug:647 - [114/118] Slide: TCGA-UW-A7GU-11Z-00-DX1.BC340CDF-7F82-4314-86BA-E003AE43389D.svs
+2025-12-25 22:12:16,377 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GU-11Z-00-DX1.BC340CDF-7F82-4314-86BA-E003AE43389D_patches.h5
+2025-12-25 22:12:16,447 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:12:16,459 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GU-11Z-00-DX1.BC340CDF-7F82-4314-86BA-E003AE43389D -> he_e_suppress_L2
+2025-12-25 22:12:23,399 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GU-11Z-00-DX1.BC340CDF-7F82-4314-86BA-E003AE43389D.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GU-11Z-00-DX1.BC340CDF-7F82-4314-86BA-E003AE43389D.h5
+2025-12-25 22:12:23,594 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:12:23,595 [INFO] extract_aug:647 - [115/118] Slide: TCGA-UW-A7GX-01Z-00-DX1.C99CCFC7-C714-4F0D-AC12-D88F6DFAEFB6.svs
+2025-12-25 22:12:23,595 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GX-01Z-00-DX1.C99CCFC7-C714-4F0D-AC12-D88F6DFAEFB6_patches.h5
+2025-12-25 22:12:23,622 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:12:23,629 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GX-01Z-00-DX1.C99CCFC7-C714-4F0D-AC12-D88F6DFAEFB6 -> he_e_suppress_L2
+2025-12-25 22:15:31,865 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GX-01Z-00-DX1.C99CCFC7-C714-4F0D-AC12-D88F6DFAEFB6.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GX-01Z-00-DX1.C99CCFC7-C714-4F0D-AC12-D88F6DFAEFB6.h5
+2025-12-25 22:15:32,142 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:15:32,142 [INFO] extract_aug:647 - [116/118] Slide: TCGA-UW-A7GX-11Z-00-DX1.57C4FD28-5463-40C5-9E87-484F3326B395.svs
+2025-12-25 22:15:32,146 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GX-11Z-00-DX1.57C4FD28-5463-40C5-9E87-484F3326B395_patches.h5
+2025-12-25 22:15:32,223 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:15:32,233 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GX-11Z-00-DX1.57C4FD28-5463-40C5-9E87-484F3326B395 -> he_e_suppress_L2
+2025-12-25 22:17:48,858 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GX-11Z-00-DX1.57C4FD28-5463-40C5-9E87-484F3326B395.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GX-11Z-00-DX1.57C4FD28-5463-40C5-9E87-484F3326B395.h5
+2025-12-25 22:17:49,230 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:17:49,230 [INFO] extract_aug:647 - [117/118] Slide: TCGA-UW-A7GY-01Z-00-DX1.CD2CCA5D-C92B-409C-B5D6-1EB7C8A0B4CD.svs
+2025-12-25 22:17:49,231 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GY-01Z-00-DX1.CD2CCA5D-C92B-409C-B5D6-1EB7C8A0B4CD_patches.h5
+2025-12-25 22:17:49,313 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:17:49,320 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GY-01Z-00-DX1.CD2CCA5D-C92B-409C-B5D6-1EB7C8A0B4CD -> he_e_suppress_L2
+2025-12-25 22:21:43,601 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GY-01Z-00-DX1.CD2CCA5D-C92B-409C-B5D6-1EB7C8A0B4CD.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GY-01Z-00-DX1.CD2CCA5D-C92B-409C-B5D6-1EB7C8A0B4CD.h5
+2025-12-25 22:21:43,960 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:21:43,961 [INFO] extract_aug:647 - [118/118] Slide: TCGA-UW-A7GY-11Z-00-DX1.7410A3EA-BFFD-4744-8DB2-66A409C0BFA9.svs
+2025-12-25 22:21:43,962 [INFO] extract_aug:656 - Coords matched: TCGA-UW-A7GY-11Z-00-DX1.7410A3EA-BFFD-4744-8DB2-66A409C0BFA9_patches.h5
+2025-12-25 22:21:44,057 [DEBUG] extract_aug:660 - Loaded WSI successfully.
+2025-12-25 22:21:44,065 [INFO] extract_aug:678 - [RUN] TCGA-UW-A7GY-11Z-00-DX1.7410A3EA-BFFD-4744-8DB2-66A409C0BFA9 -> he_e_suppress_L2
+2025-12-25 22:23:10,885 [INFO] extract_aug:692 - [OK] TCGA-UW-A7GY-11Z-00-DX1.7410A3EA-BFFD-4744-8DB2-66A409C0BFA9.svs -> he_e_suppress_L2 | out=/scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus_augmented/he_e_suppress_L2/TCGA-UW-A7GY-11Z-00-DX1.7410A3EA-BFFD-4744-8DB2-66A409C0BFA9.h5
+2025-12-25 22:23:11,102 [DEBUG] extract_aug:700 - Released WSI handle.
+2025-12-25 22:23:11,102 [INFO] extract_aug:704 - ========== SUMMARY ==========
+2025-12-25 22:23:11,102 [INFO] extract_aug:705 - Slides discovered:       118
+2025-12-25 22:23:11,102 [INFO] extract_aug:706 - Slides w/ coords:        118
+2025-12-25 22:23:11,102 [INFO] extract_aug:707 - Slides missing coords:   0
+2025-12-25 22:23:11,102 [INFO] extract_aug:708 - Runs processed:          118
+2025-12-25 22:23:11,102 [INFO] extract_aug:709 - Runs skipped (existing): 0
+2025-12-25 22:23:11,102 [INFO] extract_aug:710 - Runs failed:             0
+2025-12-25 22:23:11,102 [INFO] extract_aug:711 - =============================
+ct_aug:710 - Runs failed:             0
+2025-12-25 17:38:28,762 [INFO] extract_aug:711 - =============================

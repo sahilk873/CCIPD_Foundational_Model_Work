@@ -54,68 +54,6 @@ class PatchFeatureDataset(Dataset):
     def __getitem__(self, idx):
         return self.features[idx], self.labels[idx]
 
-'''class PatchFeatureDataset(Dataset):
-    def __init__(self, h5_dir):
-        features_list, labels_list = [], []
-
-        for fname in os.listdir(h5_dir):
-            if not fname.endswith(".h5"):
-                continue
-            full_path = os.path.join(h5_dir, fname)
-            try:
-                with h5py.File(full_path, "r") as f:
-                    if "features" in f and "labels" in f:
-                        features = f["features"][:]
-                        labels = f["labels"][:]
-
-                        # Ensure both are numpy arrays and 1D labels
-                        features = np.asarray(features)
-                        labels = np.asarray(labels).flatten()
-
-                        # Find valid indices (non-NaN and matching shape)
-                        min_len = min(len(features), len(labels))
-                        features, labels = features[:min_len], labels[:min_len]
-
-                        # Filter out invalid label values (e.g., -1 or NaN)
-                        valid_mask = np.isfinite(labels)
-                        valid_mask &= np.isin(labels, [0, 1])  # keep binary only if applicable
-                        num_dropped = np.sum(~valid_mask)
-
-                        if num_dropped > 0:
-                            print(f"⚠️ Dropped {num_dropped} invalid patches in {fname}")
-
-                        # Apply mask to features and labels
-                        features = features[valid_mask]
-                        labels = labels[valid_mask]
-
-                        # Only append if there are any valid patches left
-                        if len(features) > 0:
-                            features_list.append(features)
-                            labels_list.append(labels)
-                        else:
-                            print(f"⚠️ All patches invalid in {fname}, skipping file.")
-                    else:
-                        print(f"⚠️ Skipping {fname}: missing 'features' or 'labels'")
-            except Exception as e:
-                print(f"❌ Error reading {fname}: {e}")
-
-        if not features_list:
-            raise ValueError("No valid patches found in the directory.")
-
-        all_features = np.concatenate(features_list, axis=0)
-        all_labels = np.concatenate(labels_list, axis=0)
-
-        print(f"[INFO] Total number of patches loaded: {len(all_features):,}")
-
-        self.features = torch.tensor(all_features, dtype=torch.float32)
-        self.labels = torch.tensor(all_labels, dtype=torch.long)
-
-    def __len__(self):
-        return len(self.labels)
-
-    def __getitem__(self, idx):
-        return self.features[idx], self.labels[idx]
-'''
 
 class DeepMLP(nn.Module):
     def __init__(self, input_dim, hidden_dim=512):
