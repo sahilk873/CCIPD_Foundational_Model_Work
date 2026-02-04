@@ -40,12 +40,31 @@ def append_labels(h5_path, tumor_polygons, patch_size=512, label_dataset_name="l
         h5_file.create_dataset(label_dataset_name, data=labels)
 
 
+def normalize_slide_id(path):
+    name = os.path.splitext(os.path.basename(path))[0]
+    name = name.replace("_patches_images", "")
+    name = name.replace("_patches", "")
+    name = name.replace("_coords", "")
+    name = name.replace("_features", "")
+    name = name.replace("_images", "")
+    name = name.replace(".tumor", "")
+    return name.lower()
+
+
 def match_slide_ids(h5_files, xml_files):
     matched = []
+    xml_map = {normalize_slide_id(xml_path): xml_path for xml_path in xml_files}
+
     for h5_path in h5_files:
-        base_id = os.path.splitext(os.path.basename(h5_path))[0]
+        h5_id = normalize_slide_id(h5_path)
+        xml_path = xml_map.get(h5_id)
+        if xml_path:
+            matched.append((h5_path, xml_path))
+            continue
+
+        # fallback: substring match in case of extra characters
         for xml_path in xml_files:
-            if base_id in xml_path:
+            if h5_id in normalize_slide_id(xml_path):
                 matched.append((h5_path, xml_path))
                 break
     return matched

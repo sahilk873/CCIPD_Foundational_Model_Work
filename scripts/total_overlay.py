@@ -34,8 +34,8 @@ def predict_classes_and_probs(model, features, device):
 
 
 def find_common_files(hopt_dir, musk_dir, conch_dir):
-    hopt  = {os.path.basename(p) for p in glob.glob(os.path.join(hopt_dir, "*.h5"))}
-    musk  = {os.path.basename(p) for p in glob.glob(os.path.join(musk_dir, "*.h5"))}
+    hopt = {os.path.basename(p) for p in glob.glob(os.path.join(hopt_dir, "*.h5"))}
+    musk = {os.path.basename(p) for p in glob.glob(os.path.join(musk_dir, "*.h5"))}
     conch = {os.path.basename(p) for p in glob.glob(os.path.join(conch_dir, "*.h5"))}
     return sorted(hopt & musk & conch)
 
@@ -63,10 +63,17 @@ def detect_coords_mode(coords, tile_size):
 
 # ------------------------ Overlay (TN transparent, no gaps, correct origin) ------------------------
 
-def overlay_confusion_map(slide_img_rgb, patch_preds, patch_labels, coords,
-                          tile_size, coords_mode="topleft", alpha=0.85, pad_px=6,
-                          debug_print=False):
-
+def overlay_confusion_map(
+    slide_img_rgb,
+    patch_preds,
+    patch_labels,
+    coords,
+    tile_size,
+    coords_mode="topleft",
+    alpha=0.85,
+    pad_px=6,
+    debug_print=False,
+):
     preds = np.asarray(patch_preds, dtype=np.uint8).ravel()
     gts = np.asarray(patch_labels, dtype=np.uint8).ravel()
     coords = np.asarray(coords, dtype=float)
@@ -144,8 +151,10 @@ def tpr_and_count(preds, labels):
     return tpr, tp, pos
 
 
+# ------------------------ Voting / ensemble baselines ------------------------
+
 def hard_vote(preds_list):
-    """Majority vote on class labels (len=3 → no ties)."""
+    """Majority vote on class labels (len=3 -> no ties)."""
     stacked = np.vstack([p.astype(int).ravel() for p in preds_list])
     votes = stacked.sum(axis=0)  # count of 1s
     return (votes >= 2).astype(int)
@@ -156,6 +165,51 @@ def soft_vote(probs_list, thresh=0.5):
     stacked = np.vstack([q.ravel() for q in probs_list])
     mean_probs = stacked.mean(axis=0)
     return (mean_probs >= thresh).astype(int), mean_probs
+
+
+def weighted_soft_vote(probs_list, thresh=0.5, eps=1e-8):
+    """
+    Confidence-weighted average of probs.
+    Weight per patch: |p - 0.5| (distance from uncertainty).
+    """
+    P = np.vstack([p.ravel() for p in probs_list])          # (3, N)
+    W = np.abs(P - 0.5) + eps                               # (3, N)
+    mean_probs = (W * P).sum(axis=0) / W.sum(axis=0)        # (N,)
+    preds = (mean_probs >= thresh).astype(int)
+    return preds, mean_probs
+
+
+def winner_takes_all(probs_list, thresh=0.5):
+    """
+    For each patch, pick the single model with the highest confidence max(p, 1-p),
+    then use its probability / threshold.
+    """
+    P = np.vstack([p.ravel() for p in probs_list])          # (3, N)
+    conf = np.maximum(P, 1.0 - P)                           # (3, N)
+    idx = np.argmax(conf, axis=0)                           # (N,)
+    chosen_probs = P[idx, np.arange(P.shape[1])]            # (N,)
+    preds = (chosen_probs >= thresh).astype(int)
+    return preds, chosen_probs
+
+
+def or_vote(preds_list):
+    """Predict positive if ANY model predicts positive."""
+    S = np.vstack([p.astype(int).ravel() for p in preds_list])
+    return (S.sum(axis=0) >= 1).astype(int)
+
+
+def and_vote(preds_list):
+    """Predict positive if ALL models predict positive."""
+    S = np.vstack([p.astype(int).ravel() for p in preds_list])
+    return (S.sum(axis=0) == S.shape[0]).astype(int)
+
+
+def median_vote(probs_list, thresh=0.5):
+    """Median of probs (robust to one outlier), then threshold."""
+    P = np.vstack([p.ravel() for p in probs_list])
+    med_probs = np.median(P, axis=0)
+    preds = (med_probs >= thresh).astype(int)
+    return preds, med_probs
 
 
 # ------------------------ Main ------------------------
@@ -180,12 +234,25 @@ def main(args):
     ensembles_dir = os.path.join(args.save_dir, "ensembles")
     deep_dir_out = os.path.join(ensembles_dir, "deep_mlp")
     soft_dir_out = os.path.join(ensembles_dir, "soft_vote")
+    wsoft_dir_out = os.path.join(ensembles_dir, "weighted_soft_vote")
+    wta_dir_out = os.path.join(ensembles_dir, "winner_takes_all")
+    median_dir_out = os.path.join(ensembles_dir, "median_vote")
+    or_dir_out = os.path.join(ensembles_dir, "or_vote")
+    and_dir_out = os.path.join(ensembles_dir, "and_vote")
+
     hard_dir_out = os.path.join(ensembles_dir, "hard_vote") if args.include_hard_vote else None
 
     topdiff_dir = os.path.join(args.save_dir, "top_diffs")
 
-    for d in [args.save_dir, individuals_dir, hopt_dir_out, musk_dir_out, conch_dir_out,
-              ensembles_dir, deep_dir_out, soft_dir_out, topdiff_dir] + ([hard_dir_out] if hard_dir_out else []):
+    mkdirs = [
+        args.save_dir, individuals_dir, hopt_dir_out, musk_dir_out, conch_dir_out,
+        ensembles_dir, deep_dir_out, soft_dir_out, wsoft_dir_out, wta_dir_out,
+        median_dir_out, or_dir_out, and_dir_out, topdiff_dir
+    ]
+    if hard_dir_out:
+        mkdirs.append(hard_dir_out)
+
+    for d in mkdirs:
         os.makedirs(d, exist_ok=True)
 
     # Infer input dims
@@ -195,9 +262,8 @@ def main(args):
     _, f_c, _ = load_h5_data(os.path.join(args.conch_dir, sample))
     in_hopt, in_musk, in_conch = f_h.shape[1], f_m.shape[1], f_c.shape[1]
     ensemble_in = in_hopt + in_musk + in_conch
-    print(f"[INFO] Feature dims — Hoptimus: {in_hopt}, Musk: {in_musk}, Conch: {in_conch} (Ensemble: {ensemble_in})")
-    print("[INFO] Ensemble inference order: [Conch, Musk, Hoptimus] — must match training!")
-
+    print(f"[INFO] Feature dims - Hoptimus: {in_hopt}, Musk: {in_musk}, Conch: {in_conch} (Ensemble: {ensemble_in})")
+    print("[INFO] Ensemble inference order: [Conch, Musk, Hoptimus] - must match training!")
 
     # Load models
     hopt_model = DeepMLP(input_dim=in_hopt).to(device)
@@ -234,45 +300,73 @@ def main(args):
         musk_preds, musk_probs = predict_classes_and_probs(musk_model, feat_m, device)
         conch_preds, conch_probs = predict_classes_and_probs(conch_model, feat_c, device)
 
-        # deep ensemble preds
+        # deep ensemble preds (concat order must match training)
         concat_feats = np.concatenate([feat_c, feat_m, feat_h], axis=1)
         ens_preds, ens_probs = predict_classes_and_probs(ensemble_model, concat_feats, device)
 
         # voting ensembles
-        hard_preds = hard_vote([hopt_preds, musk_preds, conch_preds])
-        soft_preds, _ = soft_vote([hopt_probs, musk_probs, conch_probs], thresh=0.5)
+        soft_preds, _ = soft_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        wsoft_preds, _ = weighted_soft_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        med_preds, _ = median_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        wta_preds, _ = winner_takes_all([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
 
-        # TPRs
+        hard_preds = hard_vote([hopt_preds, musk_preds, conch_preds])
+        or_preds = or_vote([hopt_preds, musk_preds, conch_preds])
+        and_preds = and_vote([hopt_preds, musk_preds, conch_preds])
+
+        # TPRs (skip slides without positives)
         tpr_h, tp_h, pos = tpr_and_count(hopt_preds, labels)
         tpr_m, tp_m, _ = tpr_and_count(musk_preds, labels)
         tpr_c, tp_c, _ = tpr_and_count(conch_preds, labels)
-        tpr_ens, tp_ens, _ = tpr_and_count(ens_preds, labels)
-        tpr_soft, tp_soft, _ = tpr_and_count(soft_preds, labels)
-        tpr_hard, tp_hard, _ = tpr_and_count(hard_preds, labels)
 
-        if None in (tpr_h, tpr_m, tpr_c, tpr_ens, tpr_soft, tpr_hard):
-            # skip slides without positives
+        tpr_deep, tp_deep, _ = tpr_and_count(ens_preds, labels)
+        tpr_soft, tp_soft, _ = tpr_and_count(soft_preds, labels)
+        tpr_wsoft, tp_wsoft, _ = tpr_and_count(wsoft_preds, labels)
+        tpr_med, tp_med, _ = tpr_and_count(med_preds, labels)
+        tpr_wta, tp_wta, _ = tpr_and_count(wta_preds, labels)
+
+        tpr_or, tp_or, _ = tpr_and_count(or_preds, labels)
+        tpr_and, tp_and, _ = tpr_and_count(and_preds, labels)
+
+        if None in (tpr_h, tpr_m, tpr_c, tpr_deep, tpr_soft, tpr_wsoft, tpr_med, tpr_wta, tpr_or, tpr_and):
             continue
 
-        # disagreement metric: max over models of max(|model-ens|, |model-soft|)
+        tpr_hard, tp_hard = None, None
+        if args.include_hard_vote:
+            tpr_hard, tp_hard, _ = tpr_and_count(hard_preds, labels)
+            if tpr_hard is None:
+                continue
+
+        # disagreement metric (keep your original definition: individuals vs deep+soft)
         deltas = [
-            max(abs(tpr_h - tpr_ens), abs(tpr_h - tpr_soft)),
-            max(abs(tpr_m - tpr_ens), abs(tpr_m - tpr_soft)),
-            max(abs(tpr_c - tpr_ens), abs(tpr_c - tpr_soft)),
+            max(abs(tpr_h - tpr_deep), abs(tpr_h - tpr_soft)),
+            max(abs(tpr_m - tpr_deep), abs(tpr_m - tpr_soft)),
+            max(abs(tpr_c - tpr_deep), abs(tpr_c - tpr_soft)),
         ]
         max_disagree = max(deltas)
+
+        tprs = {
+            "hopt": tpr_h, "musk": tpr_m, "conch": tpr_c,
+            "deep": tpr_deep, "soft": tpr_soft,
+            "wsoft": tpr_wsoft, "median": tpr_med, "wta": tpr_wta,
+            "or": tpr_or, "and": tpr_and,
+        }
+        tps = {
+            "hopt": tp_h, "musk": tp_m, "conch": tp_c,
+            "deep": tp_deep, "soft": tp_soft,
+            "wsoft": tp_wsoft, "median": tp_med, "wta": tp_wta,
+            "or": tp_or, "and": tp_and,
+        }
+
+        if args.include_hard_vote:
+            tprs["hard"] = tpr_hard
+            tps["hard"] = tp_hard
 
         ranking.append({
             "base": base,
             "pos": pos,
-            "tprs": {
-                "hopt": tpr_h, "musk": tpr_m, "conch": tpr_c,
-                "deep": tpr_ens, "soft": tpr_soft, "hard": tpr_hard
-            },
-            "tps": {
-                "hopt": tp_h, "musk": tp_m, "conch": tp_c,
-                "deep": tp_ens, "soft": tp_soft, "hard": tp_hard
-            },
+            "tprs": tprs,
+            "tps": tps,
             "max_delta_vs_ensembles": max_disagree
         })
 
@@ -283,7 +377,6 @@ def main(args):
     if args.rank_by == "tp_ensemble":
         ranking.sort(key=lambda r: r["tprs"]["deep"], reverse=True)
     elif args.rank_by == "tp_delta":
-        # For backward-compat: use deep ensemble minus HOPT delta
         ranking.sort(key=lambda r: r["tprs"]["deep"] - r["tprs"]["hopt"], reverse=True)
     elif args.rank_by == "tp_count":
         ranking.sort(key=lambda r: r["tps"]["deep"], reverse=True)
@@ -295,10 +388,15 @@ def main(args):
     print(f"\n[INFO] Top slides by {args.rank_by}:")
     for r in selected:
         t = r["tprs"]
-        print(f"  {r['base']}: "
-              f"maxΔ={r['max_delta_vs_ensembles']:.3f} | "
-              f"deep={t['deep']:.3f}, soft={t['soft']:.3f}, hard={t['hard']:.3f} | "
-              f"hopt={t['hopt']:.3f}, musk={t['musk']:.3f}, conch={t['conch']:.3f}")
+        msg = (
+            f"  {r['base']}: maxΔ={r['max_delta_vs_ensembles']:.3f} | "
+            f"deep={t['deep']:.3f}, soft={t['soft']:.3f}, wsoft={t['wsoft']:.3f}, "
+            f"median={t['median']:.3f}, wta={t['wta']:.3f}, or={t['or']:.3f}, and={t['and']:.3f} | "
+            f"hopt={t['hopt']:.3f}, musk={t['musk']:.3f}, conch={t['conch']:.3f}"
+        )
+        if args.include_hard_vote:
+            msg += f", hard={t['hard']:.3f}"
+        print(msg)
 
     # ---------- PASS 2: save overlays ----------
     for r in selected:
@@ -314,7 +412,7 @@ def main(args):
         coords_c, feat_c, _ = load_h5_data(conch_path)
 
         if not (np.array_equal(coords_h, coords_m) and np.array_equal(coords_h, coords_c)):
-            print(f"[WARN] {base}: coords mismatch — skipping overlay.")
+            print(f"[WARN] {base}: coords mismatch - skipping overlay.")
             continue
 
         coords_mode_final = args.coords_mode
@@ -336,49 +434,72 @@ def main(args):
         concat_feats = np.concatenate([feat_c, feat_m, feat_h], axis=1)
         ens_preds, ens_probs = predict_classes_and_probs(ensemble_model, concat_feats, device)
 
-        hard_preds = hard_vote([hopt_preds, musk_preds, conch_preds])
-        soft_preds, _ = soft_vote([hopt_probs, musk_probs, conch_probs], thresh=0.5)
+        soft_preds, _ = soft_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        wsoft_preds, _ = weighted_soft_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        med_preds, _ = median_vote([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+        wta_preds, _ = winner_takes_all([hopt_probs, musk_probs, conch_probs], thresh=args.vote_thresh)
+
+        or_preds = or_vote([hopt_preds, musk_preds, conch_preds])
+        and_preds = and_vote([hopt_preds, musk_preds, conch_preds])
+
+        hard_preds = None
+        if args.include_hard_vote:
+            hard_preds = hard_vote([hopt_preds, musk_preds, conch_preds])
 
         # Overlays for each
         overlay_items = [
-            ("Hoptimus", hopt_preds, hopt_dir_out, r["tprs"]["hopt"]),
-            ("Musk",     musk_preds, musk_dir_out, r["tprs"]["musk"]),
-            ("Conch",    conch_preds, conch_dir_out, r["tprs"]["conch"]),
             ("Ensemble (Deep MLP)", ens_preds, deep_dir_out, r["tprs"]["deep"]),
-            ("Ensemble (Soft Vote)", soft_preds, soft_dir_out, r["tprs"]["soft"])
+            ("Ensemble (Soft Vote)", soft_preds, soft_dir_out, r["tprs"]["soft"]),
+            ("Ensemble (Weighted Soft)", wsoft_preds, wsoft_dir_out, r["tprs"]["wsoft"]),
+            ("Ensemble (Median Vote)", med_preds, median_dir_out, r["tprs"]["median"]),
+            ("Ensemble (Winner Takes All)", wta_preds, wta_dir_out, r["tprs"]["wta"]),
+            ("Ensemble (OR Vote)", or_preds, or_dir_out, r["tprs"]["or"]),
+            ("Ensemble (AND Vote)", and_preds, and_dir_out, r["tprs"]["and"]),
+            ("Hoptimus", hopt_preds, hopt_dir_out, r["tprs"]["hopt"]),
+            ("Musk", musk_preds, musk_dir_out, r["tprs"]["musk"]),
+            ("Conch", conch_preds, conch_dir_out, r["tprs"]["conch"]),
         ]
         if args.include_hard_vote:
-            overlay_items.append(("Ensemble (Hard Vote)", hard_preds, hard_dir_out, r["tprs"]["hard"]))
+            overlay_items.insert(2, ("Ensemble (Hard Vote)", hard_preds, hard_dir_out, r["tprs"]["hard"]))
 
-        # Save individual overlays into their respective folders
+        # Save overlays
         per_map_images = {}
         legend_any = None
         for title, preds_arr, outdir, tpr_val in overlay_items:
             ov, legend = overlay_confusion_map(
-                slide_img, preds_arr, labels, coords_h,
-                args.tile_size, coords_mode_final, args.alpha, pad_px=args.pad_px, debug_print=args.debug
+                slide_img,
+                preds_arr,
+                labels,
+                coords_h,
+                args.tile_size,
+                coords_mode_final,
+                args.alpha,
+                pad_px=args.pad_px,
+                debug_print=args.debug,
             )
             ov = np.rot90(ov, k=3)
             out_path = os.path.join(outdir, f"{stem}_overlay.png")
             Image.fromarray(ov).save(out_path, quality=95)
-            legend_any = legend  # reuse legend
+            legend_any = legend
             per_map_images[title] = (ov, tpr_val, out_path)
-            print(f"[INFO] Saved overlay → {out_path}")
+            print(f"[INFO] Saved overlay -> {out_path}")
 
-        # Composite comparison for top disagreement slides
-        # Layout: up to 6 panels (3 individual + deep + soft + optional hard)
-        titles_in_order = ["Ensemble (Deep MLP)", "Ensemble (Soft Vote)", "Hoptimus", "Musk", "Conch"]
-        if args.include_hard_vote:
-            titles_in_order.insert(1, "Ensemble (Hard Vote)")
+        # Composite comparison
+        titles_in_order = [t[0] for t in overlay_items]
 
         n_panels = len(titles_in_order)
         ncols = 3
         nrows = int(np.ceil(n_panels / ncols)) + 1  # +1 for legend row
 
         fig = plt.figure(figsize=(ncols * 7.5, (nrows - 1) * 6.5 + 2.0))
-        gs = fig.add_gridspec(nrows=nrows, ncols=ncols, height_ratios=[6]*(nrows-1) + [1], hspace=0.03, wspace=0.03)
+        gs = fig.add_gridspec(
+            nrows=nrows,
+            ncols=ncols,
+            height_ratios=[6] * (nrows - 1) + [1],
+            hspace=0.03,
+            wspace=0.03
+        )
 
-        # draw images
         idx = 0
         for ti in titles_in_order:
             ov_img, tpr_val, _ = per_map_images[ti]
@@ -390,21 +511,22 @@ def main(args):
             ax.axis("off")
             idx += 1
 
-        # legend
-        leg_ax = fig.add_subplot(gs[nrows-1, :])
+        leg_ax = fig.add_subplot(gs[nrows - 1, :])
         leg_ax.axis("off")
         leg_ax.legend(handles=legend_any, loc="center", ncol=3, frameon=True, fontsize=14)
 
         comp_out = os.path.join(topdiff_dir, f"{stem}_comparison.png")
         plt.savefig(comp_out, dpi=300, bbox_inches="tight")
         plt.close(fig)
-        print(f"[INFO] Saved comparison → {comp_out}")
+        print(f"[INFO] Saved comparison -> {comp_out}")
 
 
 # ------------------------ CLI ------------------------
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(description="Generate overlays for individual models, deep ensemble, and vote ensembles; rank by max disagreement.")
+    p = argparse.ArgumentParser(
+        description="Generate overlays for individual models, deep ensemble, and multiple voting ensembles; rank by disagreement."
+    )
     # feature/slide roots
     p.add_argument("--hopt_dir", required=True)
     p.add_argument("--musk_dir", required=True)
@@ -421,20 +543,39 @@ if __name__ == "__main__":
     p.add_argument("--tile_size", type=int, default=512)
     p.add_argument("--coords_mode", choices=["auto", "topleft", "center"], default="auto")
     p.add_argument("--alpha", type=float, default=0.5)
-    p.add_argument("--pad_px", type=int, default=6, help="Padding (in px) to slightly expand each colored cell for seamless overlays.")
+    p.add_argument("--pad_px", type=int, default=6, help="Padding in px to slightly expand each colored cell for seamless overlays.")
+
+    # voting
+    p.add_argument("--vote_thresh", type=float, default=0.5, help="Threshold for probability-based votes (soft/weighted/median/winner-takes-all).")
 
     # output, selection, device
     p.add_argument("--save_dir", required=True)
     p.add_argument("--max_overlays", type=int, default=150)
     p.add_argument("--top_k", type=int, default=3)
-    p.add_argument("--rank_by", choices=["tp_ensemble", "tp_delta", "tp_count", "max_delta_vs_ensembles"],
-                   default="max_delta_vs_ensembles",
-                   help="Ranking criterion. Default: slides where individuals disagree most vs. deep+soft ensembles.")
+    p.add_argument(
+        "--rank_by",
+        choices=["tp_ensemble", "tp_delta", "tp_count", "max_delta_vs_ensembles"],
+        default="max_delta_vs_ensembles",
+        help="Ranking criterion. Default: slides where individuals disagree most vs deep+soft ensembles."
+    )
     p.add_argument("--include_hard_vote", action="store_true", help="Also generate/save hard-vote ensemble overlays.")
     p.add_argument("--device", type=str, default="cuda", choices=["cuda", "cpu"])
     p.add_argument("--debug", action="store_true")
-    args = p.parse_args()
 
+    args = p.parse_args()
     main(args)
 
-#python total_overlay.py --hopt_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus1 --musk_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_musk --conch_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 --slides_dir /scratch/pioneer/users/sxk2517/trident_processed/thumbnails --hopt_model /scratch/pioneer/users/sxk2517/model_weights/hoptimus_base.pth --musk_model /scratch/pioneer/users/sxk2517/model_weights/musk_base.pth --conch_model /scratch/pioneer/users/sxk2517/model_weights/conch_20x.pth --ensemble_model  /scratch/pioneer/users/sxk2517/model_weights/fused_all.pth --save_dir /scratch/pioneer/users/sxk2517/overlays_total --max_overlays 150
+# Example:
+# python total_overlay.py \
+#   --hopt_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_hoptimus1 \
+#   --musk_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_musk \
+#   --conch_dir /scratch/pioneer/users/sxk2517/trident_processed/20x_512px_0px_overlap/features_conch_v15 \
+#   --slides_dir /scratch/pioneer/users/sxk2517/trident_processed/thumbnails \
+#   --hopt_model /scratch/pioneer/users/sxk2517/model_weights/hoptimus_base.pth \
+#   --musk_model /scratch/pioneer/users/sxk2517/model_weights/musk_base.pth \
+#   --conch_model /scratch/pioneer/users/sxk2517/model_weights/conch_20x.pth \
+#   --ensemble_model /scratch/pioneer/users/sxk2517/model_weights/fused_all.pth \
+#   --save_dir /scratch/pioneer/users/sxk2517/overlays_total \
+#   --max_overlays 150 \
+#   --top_k 3 \
+#   --include_hard_vote

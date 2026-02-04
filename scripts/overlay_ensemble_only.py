@@ -338,7 +338,7 @@ if __name__ == "__main__":
     p.add_argument("--max_slides", type=int, default=None, help="If set, process only first N common slides.")
     p.add_argument("--align_by_coords", action="store_true",
                    help="Align patches by coords if ordering differs across dirs (keeps coord intersection).")
-    p.add_argument("--rotate_k", type=int, default=0,
+    p.add_argument("--rotate_k", type=int, default=3,
                    help="Rotate output image by 90° k times (e.g., 3 matches your earlier k=3 fix).")
     p.add_argument("--debug", action="store_true")
     args = p.parse_args()

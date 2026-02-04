@@ -311,6 +311,7 @@ def plot_attention_overlay(
     save_path: Path,
     attn_thresh: float = 0.15,
     attn_alpha: float = 0.5,
+    attn_display_gamma: Optional[float] = 0.4,
 ):
     img = tile_tensor[0].permute(1, 2, 0).detach().cpu().numpy().astype(np.float32, copy=False)
     vmin, vmax = float(img.min()), float(img.max())
@@ -320,17 +321,20 @@ def plot_attention_overlay(
     amin, amax = float(attn.min()), float(attn.max())
     attn = (attn - amin) / (amax - amin + 1e-8)  # now in [0,1]
 
-    # Build transparency mask: below threshold -> invisible
+    # Log-style display transform so colormap spreads smoothly (gamma < 1 stretches low values)
+    if attn_display_gamma is not None:
+        attn_display = np.power(attn, attn_display_gamma)
+    else:
+        attn_display = attn
+
+    # Threshold in linear space; colormap/alpha use display values
     attn_thresh = float(np.clip(attn_thresh, 0.0, 1.0))
+    mask = attn >= attn_thresh
     alpha = np.zeros_like(attn, dtype=np.float32)
-    alpha[attn >= attn_thresh] = float(np.clip(attn_alpha, 0.0, 1.0))
+    alpha[mask] = (attn_display[mask] * np.clip(attn_alpha, 0.0, 1.0)).astype(np.float32)
 
-    # Optional: if you want opacity to scale with attention strength above threshold, use:
-    # alpha = np.clip((attn - attn_thresh) / (1.0 - attn_thresh + 1e-8), 0.0, 1.0) * attn_alpha
-
-    # You can also set below-threshold values to NaN to avoid any colormap bleed:
-    attn_vis = attn.copy()
-    attn_vis[attn < attn_thresh] = np.nan
+    attn_vis = attn_display.copy()
+    attn_vis[~mask] = np.nan
 
     plt.figure(figsize=(5, 5))
     plt.imshow(img, interpolation="nearest")
@@ -402,6 +406,8 @@ def parse_args():
                 help="Attention threshold in [0,1] after normalization. Below becomes transparent.")
     ap.add_argument("--attn-alpha", type=float, default=0.5,
                     help="Max overlay opacity for attention >= threshold.")
+    ap.add_argument("--attn-display-gamma", type=float, default=0.4,
+                    help="Power (gamma) for display transform; <1 spreads low attention (default 0.4). Use 1.0 for linear.")
 
     return ap.parse_args()
 
@@ -483,6 +489,7 @@ def main():
                                     save_path,
                                     attn_thresh=args.attn_thresh,
                                     attn_alpha=args.attn_alpha,
+                                    attn_display_gamma=args.attn_display_gamma,
                                 )
 
 
